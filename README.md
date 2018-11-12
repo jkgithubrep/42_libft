@@ -35,3 +35,34 @@
 
 - ft\_memalloc
 - ft\_memdel
+- ft\_strnew
+- ft\_strdel
+- ft\_strclr
+- ft\_striter
+- ft\_striteri
+- ft\_strmap
+- ft\_strmapi
+- ft\_strequ
+- ft\_strnequ
+- ft\_strsub
+- ft\_stjoin
+- ft\_strtrim
+- ft\_strsplit
+- ft\_itoa
+- ft\_putchar
+- ft\_putstr
+- ft\_putendl
+- ft\_putnbr
+- ft\_putchar\_fd
+- ft\_putstr\_fd
+- ft\_putendl\_fd
+- ft\_putnbr\_fd
+
+## Partie bonus
+
+- ft\_lstnew
+- ft\_lstdelone
+- ft\_lstdel
+- ft\_lstadd
+- ft\_lstiter
+- ft\_lstmap
