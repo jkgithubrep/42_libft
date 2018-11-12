@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 15:31:54 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/12 15:21:26 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/12 15:38:25 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "libft.h"
 
-void	ft_putchar(char c);
-void    ft_putstr(char const *s);
-void	ft_putnbr(int n);
-
-#endif
+int		main(int ac, char **av)
+{
+	(void)ac;
+	(void)av;
+	int		i;
+	int		tab_size;
+	int		tab[] = {-1000, -10, -3, -1, 0, 1, 5, 10, 100, 1000, -2147483648,
+						2147483647};
+	i = 0;
+	tab_size = sizeof(tab)/sizeof(tab[0]);
+	while (i < tab_size)
+	{
+		ft_putnbr(tab[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	return (0);
+}

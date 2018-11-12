@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 15:31:54 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/12 14:11:09 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/12 14:23:03 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "libft.h"
 
-void	ft_putchar(char c);
-void    ft_putstr(char const *s);
-void	ft_putnbr(int n);
-
-#endif
+void	ft_putstr(char const *s)
+{
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+	}
+}

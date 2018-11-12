@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 15:31:54 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/12 13:32:27 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/12 15:13:20 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "libft.h"
 
-void	ft_putchar(char c);
-void    ft_putstr(char const *s);
-void	ft_putnbr(int n);
+int		main(int ac, char **av)
+{
+	unsigned char	c;
 
-#endif
+	(void)ac;
+	(void)av;
+	c = 0xDA;
+	ft_putchar(c);
+	c = 0xB7;
+	ft_putchar(c);
+	ft_putchar('\n');
+	return (0);	
+}

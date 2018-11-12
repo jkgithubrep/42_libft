@@ -54,7 +54,7 @@
 - [ ] ft\_putendl
 - [ ] ft\_putnbr
 - [x] ft\_putchar\_fd
-- [ ] ft\_putstr\_fd
+- [x] ft\_putstr\_fd
 - [ ] ft\_putendl\_fd
 - [ ] ft\_putnbr\_fd
 
