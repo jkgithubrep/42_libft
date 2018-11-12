@@ -49,14 +49,14 @@
 - [ ] ft\_strtrim
 - [ ] ft\_strsplit
 - [ ] ft\_itoa
-- [ ] ft\_putchar
-- [ ] ft\_putstr
-- [ ] ft\_putendl
-- [ ] ft\_putnbr
+- [x] ft\_putchar
+- [x] ft\_putstr
+- [x] ft\_putendl
+- [x] ft\_putnbr
 - [x] ft\_putchar\_fd
 - [x] ft\_putstr\_fd
-- [ ] ft\_putendl\_fd
-- [ ] ft\_putnbr\_fd
+- [x] ft\_putendl\_fd
+- [x] ft\_putnbr\_fd
 
 ## Partie bonus
 

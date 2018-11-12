@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/12 15:29:50 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/12 17:49:01 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,14 @@ POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
 
 OBJ_PATH = obj
 
-SRC_NAME = ft_putchar.c \
-		   ft_putstr.c \
-		   ft_putnbr.c
+SRC_NAME = ft_print_tab_char.c \
+			ft_putchar.c \
+			ft_putchar_fd.c \
+			ft_putendl.c \
+			ft_putnbr.c \
+			ft_putnbr_fd.c \
+			ft_putstr.c \
+			ft_putstr_fd.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
