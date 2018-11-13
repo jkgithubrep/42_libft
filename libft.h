@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 18:41:00 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:49:07 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 
+void	*ft_memset(void *b, int c, size_t len);
 void	ft_print_tab_char(char *tab, int size);
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);

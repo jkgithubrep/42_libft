@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   base_memset_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 18:28:44 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/13 14:30:45 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/13 17:27:30 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/13 20:10:46 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int		main(int ac, char **av)
 {
-	size_t i;
-	unsigned char *str;
+	unsigned char	*bs1;
+	int				bs2[100] = {0};
+	long			bs3[100] = {0};
 
-	i = 0;
-	str = (unsigned char *)b;
-	while (i < len)
-	{
-		str[i] = c;
-		i++;
-	}
-	return (b);	
+	(void)ac;
+	bs1 = (void *)0;
+	if (strcmp(av[1], "NULL") == 0)
+		memset(bs1, atoi(av[2]), atoi(av[3]));
+	else if (strcmp(av[1], "int[]") == 0)
+		memset(bs2, atoi(av[2]), atoi(av[3]));
+	else if (strcmp(av[1], "long[]") == 0)
+		memset(bs3, atoi(av[2]), atoi(av[3]));
+	return (0);
 }
