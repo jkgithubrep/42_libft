@@ -6,31 +6,33 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:27:30 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/14 10:50:07 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/14 14:51:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	test_errors(void *(*pf)(void *, int, size_t), char **av)
-{
-	unsigned char	*bs1;
-	unsigned char	bs2[100] = {0};
-
-	bs1 = NULL;
-	if (strcmp(av[2], "NULL") == 0)
-		pf(bs1, atoi(av[3]), atoi(av[4]));
-	else if (strcmp(av[2], "char[]") == 0)
-		pf(bs2, atoi(av[3]), atoi(av[4]));
-}
-
 int		main(int ac, char **av)
 {
-	(void)ac;
+	unsigned char	*bs1;
+	unsigned char	*bs2;
 
-	if (strcmp(av[1], "ft_memset") == 0)
-		test_errors(&ft_memset, av);
-	else if (strcmp(av[1], "memset") == 0)
-		test_errors(&memset, av);
+	(void)ac;
+	(void)av;
+	bs1 = NULL;
+	//bs2 = (unsigned char *)malloc(sizeof(*bs2) * 100);
+	memset(bs1, 97, -2);
+	//memset(bs1, 97, 0);
+	//memset(bs1, 97, 140);
+	//memset(bs2, 97, -2);
+	//memset(bs2, 97, 0);
+	//memset(bs2, 97, 50);
+	//memset(bs2, 97, 150);
+	//(void)ac;
+	//bs1 = NULL;
+	//if (strcmp(av[1], "NULL") == 0)
+	//	memset(bs1, atoi(av[2]), atoi(av[3]));
+	//else if (strcmp(av[1], "unsigned_char[100]") == 0)
+	//	memset(bs2, atoi(av[2]), atoi(av[3]));
 	return (0);
 }
