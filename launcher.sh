@@ -1,46 +1,42 @@
+# Display usage
 if [[ $# -eq 0 ]]; then
 	printf "%s\n" "Error: missing argument"
 	printf "%s\n" "Usage: ./launcher.sh function_name"
 fi
 
-# ft_memset
+# memset
 if [ "$1" = "memset" ]; then
-gcc -Wall -Werror -Wextra  -I. -L. -lft tests/ft_memset_test.c -o out/ft_memset_test
-function test_memset {
-	./out/ft_memset_test $1 $2
-	echo
-}
-test_memset 147 10
-test_memset 23423 23
-test_memset 93 0
-test_memset 93 34
-fi
-
-# base_memset
-if [ "$1" = "base_memset" ]; then
 	gcc -Wall -Werror -Wextra  -I. -L. -lft tests/base_memset_test.c -o out/base_memset_test
 	function base_test_memset {
-		printf "(%s, %d, %d): " $1 $2 $3
-		./out/base_memset_test $1 $2 $3 
+		{
+		./out/base_memset_test $1 $2 $3 $4
 		ERRCODE=$?
-		exec 2>&1
+		} 2> /dev/null
 		if [ ${ERRCODE} -eq 0 ]; then
-			echo "No error" 
+			 printf "%s(%s, %d, %d): %s\n" $1 $2 $3 $4 "No error (0)" 
+		elif [ ${ERRCODE} -eq 139 ]; then
+			 printf "%s(%s, %d, %d): %s\n" $1 $2 $3 $4 "Segfault (${ERRCODE})"
+		elif [ ${ERRCODE} -eq 134 ]; then
+			 printf "%s(%s, %d, %d): %s\n" $1 $2 $3 $4 "Abort (${ERRCODE})"
 		fi
 	}
-	for b in NULL int[] long[]
+	for fct in memset
 	do
-		for char in 0 98 -36 288
+		if [ fct = ft_memset ]; then
+			FT_FCT="ft_memset"
+		elif [ fct = memset ]; then
+			FCT="memset"
+		fi
+		printf "" > $fct\_errors.txt
+		for b in NULL char[]
 		do
-			for len in -2 0 3 140
+			for char in 97
 			do
-				base_test_memset $b $char $len
+				for len in -2 150
+				do
+					base_test_memset $fct $b $char $len >> $fct\_errors.txt
+				done
 			done
 		done
 	done
-fi
-
-# test
-if [ "$1" = "test" ]; then
-printf "%s\n" "$1base"
 fi
