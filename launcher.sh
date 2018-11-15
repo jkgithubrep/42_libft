@@ -8,6 +8,7 @@ fi
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
 NC='\033[0m'
 
 # Variables
@@ -21,10 +22,10 @@ COMPILE="${CC} ${CFLAGS} ${CPPFLAGS} ${LFLAGS}"
 ALL=0
 if [ "$1" = "all" ]; then
 	ALL=1
-	echo "All tests will be executed."
+	echo "All tests will be executed..."
 else
 	TEST_FCT="$1"
-	echo "Tests for ${TEST_FCT} will be executed."
+	echo "Tests for ${TEST_FCT} will be executed..."
 fi
 
 # Compilation
@@ -32,10 +33,10 @@ function compile {
 echo "Compiling $1_test.c..."
 ${COMPILE} tests/"$1"_test.c -o out/"$1"_test
 if [ $? -eq 0 ]; then
-	echo "$1_test.c compiled without errors."
+	echo "${GREEN}$1_test.c compiled without errors...${NC}"
 	RETVAL=0
 else
-	echo "$1_test.c could not compile (Error: $?)"
+	echo "${RED}$1_test.c could not compile (Error: $?)...${NC}"
 	RETVAL=-1
 fi
 return "${RETVAL}"
@@ -58,13 +59,13 @@ printf "): "
 # Error output
 function print_error {
 if [ "$1" -eq 0 ]; then
-	printf "%s\n" "No error (0)" 
+	printf "${GREEN}%s\n${NC}" "No error (0)" 
 elif [ "$1" -eq 139 ]; then
-	printf "%s\n" "Segfault (${ERRCODE})"
+	printf "${RED}%s\n${NC}" "Segfault (${ERRCODE})"
 elif [ "$1" -eq 134 ]; then
-	printf "%s\n" "Abort (${ERRCODE})"
+	printf "${RED}%s\n${NC}" "Abort (${ERRCODE})"
 else
-	printf "s\n" "Unknown error"
+	printf "${YELLOW}s\n${NC}" "Unknown error"
 fi
 }
 
@@ -79,36 +80,13 @@ if [ ${RETVAL} -eq 0 ]; then
 	{
 		./out/${FCT}_test $@ # execute function with all parameters
 		ERRCODE=$?
-	} #2> /dev/null
+	} 2> /dev/null
 	print_error ${ERRCODE}
 fi
 }
 
-# test
-if [ ${TEST_FCT} = "test" ] || [ ${ALL} -eq 1 ]; then
-	compile memset
-fi
-
 # bzero
 if [ ${TEST_FCT} = "bzero" ] || [ ${ALL} -eq 1 ]; then
-	run_test ${TEST_FCT} 0 2
-fi
-
-# memset
-if [ ${TEST_FCT} = "memset" ]; then
-for fct in ${TEST_FCT}
-do
-	printf "" > $fct\_errors.txt
-	for b in NULL unsigned_char[100] # test NULL pointer and byte string
-	do
-		for char in 0 97
-		do
-			for len in -2 150
-			do
-				base_test_memset $fct $b $char $len >> $fct\_output.txt
-			done
-		done
-	done
-done
-cat ${TEST_FCT}_output.txt
+	#run_test ${TEST_FCT} 2 10
+	compile ${TEST_FCT}
 fi
