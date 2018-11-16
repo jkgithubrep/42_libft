@@ -6,48 +6,60 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 18:55:53 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/15 19:53:21 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/16 12:38:51 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void print_bytes(void *ptr, int size) 
+void	ft_select_fct(char *fct, unsigned char *s, size_t n)
 {
-	unsigned char *p = ptr;
-	int i;
-	for (i=0; i<size; i++) {
-		printf("%02hhX ", p[i]);
+	if (strcmp(fct, "bzero") == 0)
+	{
+		bzero(s, n);
 	}
-	printf("\n");
+	else if (strcmp(fct, "ft_bzero") == 0)
+	{
+		ft_bzero(s, n);
+	}
 }
 
 int		main(int ac, char **av)
 {
-	char	*s;
-	size_t	n;
-	int		i;
+	unsigned char	*s;
+	size_t			n;
+	char			*fct;
 
-	(void)ac;
-	(void)av;
-	//if (ac != 3)
-	//{
-	//	ft_putstr("Wrong number of arguments\nUsage: bzero_test s_size n\n");
-	//	return (-1);
-	//}
-	//s = (char *)malloc(sizeof(*s) * atoi(av[1]));
-	//n = (size_t)atoi(av[2]);
-	//if (s == NULL)
-	//{
-	//	ft_putstr("Memory allocation failed.\n");
-	//	return (-1);
-	//}
-	//bzero(s, n);
-	s = (char *)malloc(sizeof(*s) * 2);
-	n = 10;
-	bzero(s, n);
-	i = 123;
-	print_bytes(&i, sizeof(i));
+	s = NULL;
+	if (ac == 2 || ac > 4)
+	{
+		ft_putstr("Wrong number of arguments\nUsage: bzero_test [string_size] nb_bytes\n");
+		return (-1);
+	}	
+	fct = strdup(av[1]);
+	if (fct == NULL)
+	{
+		ft_putstr("strdup failed");
+		return (-1);
+	}
+	if (ac == 3)
+	{
+		n = (size_t)atoi(av[2]);
+		ft_select_fct(fct, s, n);
+		ft_print_bytes(s, n);
+	}
+	if (ac == 4)
+	{
+		s = (unsigned char *)malloc(sizeof(*s) * atoi(av[2]));
+		n = (size_t)atoi(av[3]);
+		if (s == NULL)
+		{
+			ft_putstr("Memory allocation failed.\n");
+			return (-1);
+		}
+		ft_select_fct(fct, s, n);
+		ft_print_bytes(s, sizeof(*s) * atoi(av[2]));
+	}
+	free(s);
 	return (0);
 }

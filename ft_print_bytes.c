@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:33:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/16 12:14:23 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/16 11:23:05 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_print_bytes(void *ptr, int size) 
 {
-	size_t	i;
-	char 	*str;
-
-	str = s;
+	unsigned char *p;;
+	int i;
+	
 	i = 0;
-	while (i < n)
+	p = (unsigned char *)ptr;
+	while (i < size)
 	{
-		str[i] = 0;
+		printf("%02hhX ", p[i]);
 		i++;
 	}
+	printf("\n");
 }
+
