@@ -148,12 +148,17 @@ if [ "${TEST_FCT}" = "memset" ] || [ "${ALL}" = "1" ]; then
 			run_test ${TEST_FCT} $fct 0 97 -1 # s = 0, c = 97, len = -1 (s_size = 0, len < 0)
 			run_test ${TEST_FCT} $fct 0 97 5 # s = 0, c = 97, len = 5 (s_size = 0, len > s_size)
 			run_test ${TEST_FCT} $fct 10 97 0 # s = 10, c = 97, len = 0
-			run_test ${TEST_FCT} $fct 10 97 0 # s = 10, c = 97, len = -1 (len < 0)
+			run_test ${TEST_FCT} $fct 10 97 -1 # s = 10, c = 97, len = -1 (len < 0)
 			run_test ${TEST_FCT} $fct 10 97 5 # s = 10, c = 97, len = 5 (len < s_size)
+			run_test ${TEST_FCT} $fct 10 ${INT_MAX} 5 # s = 10, c = 2147483647, len = 5 (c = int max, len < s_size)
 			run_test ${TEST_FCT} $fct 10 97 15 # s = 10, c = 97, len = 15 (len > s_size)
+			run_test ${TEST_FCT} $fct 10 97 999 # s = 10, c = 97, len = 999 (len >> s_size)
+			run_test ${TEST_FCT} $fct 10 97 999999 # s = 10, c = 97, len = 999999 (len >> s_size)
+			run_test ${TEST_FCT} $fct 10 97 ${INT_MAX} # s = 10, c = 97, len = 2147483647 (len >> s_size)
 			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
 			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
 		done
@@ -193,4 +198,38 @@ if [ "${TEST_FCT}" = "bzero" ] || [ "${ALL}" = "1" ]; then
 		done
 		compare_outputs ${TEST_FCT}
 	fi
+fi
+
+# memcpy
+if [ "${TEST_FCT}" = "memcpy" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="memcpy"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} #ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+			run_test ${TEST_FCT}, $fct, 100, "Chainedecaracteres", 5
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat -v ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+		done
+		#compare_outputs ${TEST_FCT}
+	fi
+fi
+
+function test_print {
+	echo "$#"
+}
+
+#test
+if [ "${TEST_FCT}" = test ]; then
+	OLDIFS=${IFS}
+	IFS=,
+	test_print un, deux et trois
 fi
