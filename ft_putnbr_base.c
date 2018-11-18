@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:41:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/13 14:48:36 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/18 13:15:18 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/18 15:25:39 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_base_size(char *base)
 {
-	char		*tmp_dst;
-	const char	*tmp_src;
-	size_t		i;
+	int	i;
 
-	tmp_dst = (char *)dst;
-	tmp_src = (const char *)src;
 	i = 0;
-	while (i < n)
-	{
-		tmp_dst[i] = tmp_src[i];
+	while (*base++)
 		i++;
+	return (i);
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	long	n;
+	int		base_s;
+
+	n = nbr;
+	base_s = ft_base_size(base);
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
 	}
-	return (dst);
+	if (n >= base_s)
+	{
+		ft_putnbr_base(n / base_s, base);
+		ft_putchar(base[n % base_s]);
+	}
+	else
+		ft_putchar(base[n]);
 }

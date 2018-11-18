@@ -12,17 +12,14 @@
 
 #include "libft.h"
 
-void	ft_print_tab_char(char *tab, int size)
+void	ft_print_char(char *tab, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (tab[i] == 0)
-			ft_putchar('*');
-		else
-			ft_putchar(tab[i]);
+		ft_putchar(tab[i]);
 		i++;
 	}
 	ft_putchar('\n');

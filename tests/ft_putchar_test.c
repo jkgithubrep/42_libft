@@ -18,9 +18,7 @@ int		main(int ac, char **av)
 
 	(void)ac;
 	(void)av;
-	c = 0xDA;
-	ft_putchar(c);
-	c = 0xB7;
+	c = 49;
 	ft_putchar(c);
 	ft_putchar('\n');
 	return (0);	

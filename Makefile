@@ -10,8 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# !!!WARNING!!! print_bytes.c CURRENTLY USING printf
-# SHOULD BECOME ft_print_bytes.c
+# !!!WARNING!!! ft_print_bytes.c CURRENTLY USING printf
 
 .PHONY: all, clean, fclean, re
 
@@ -30,8 +29,9 @@ POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
 OBJ_PATH = obj
 
 SRC_NAME = 	ft_bzero.c \
+			ft_memcpy.c \
 			ft_memset.c \
-			ft_print_tab_char.c \
+			ft_print_char.c \
 			ft_print_bytes.c \
 			ft_putchar.c \
 			ft_putchar_fd.c \

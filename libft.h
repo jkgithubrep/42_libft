@@ -16,10 +16,11 @@
 # include <stdlib.h>
 # include <string.h>
 
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
-void	ft_print_bytes(void *ptr, int size, char *fmt); //WARNING (printf)!
-void	ft_print_tab_char(char *tab, int size);
+void	ft_print_bytes(void *ptr, int size); //WARNING (printf)!
+void	ft_print_char(char *tab, int size);
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);

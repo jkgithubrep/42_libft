@@ -13,7 +13,7 @@ CC="gcc"
 CFLAGS="-Wall -Werror -Wextra"
 CPPFLAGS="-I."
 LFLAGS="-L. -lft"
-COMPILE="${CC} ${CFLAGS} ${CPPFLAGS} ${LFLAGS}"
+COMPILE="${CC} ${CFLAGS} ${CPPFLAGS}"
 
 # Special values
 INT_MIN=-2147483648
@@ -23,11 +23,14 @@ INT_MAX=2147483647
 OUTDIR=tests_output
 
 # Display usage
-if [[ $# -eq 0 ]]; then
-	printf "${RED}%s\n" "Error: missing argument"
-	printf "%s\n${NC}" "Usage: ./lib_checker.sh [ function_name | all ]"
+if [ $# -eq 0 ]; then
+	printf "${RED}%s${NC}\n" "Error: missing argument"
+	printf "${RED}%s${NC}\n" "Usage: ./lib_checker.sh [ function_name | all ]"
 	exit -1;
 fi
+
+# Clear screen
+clear
 
 # Save parameters
 ALL=0
@@ -48,21 +51,21 @@ if [ "$#" -eq 2 ]; then
 fi
 
 # Compilation
-function compile {
+compile() {
 echo "Compiling $1_test.c..."
-${COMPILE} tests/"$1"_test.c -o out/"$1"_test
+${COMPILE} tests/"$1"_test.c -o out/"$1"_test ${LFLAGS} # lib flags after for ubuntu
 if [ $? -eq 0 ]; then
-	echo "${GREEN}$1_test.c compiled without errors...${NC}"
+	printf "${GREEN}$1_test.c compiled without errors...${NC}\n"
 	RETVAL=0
 else
-	echo "${RED}$1_test.c could not compile (Error: $?)...${NC}"
+	printf "${RED}$1_test.c could not compile (Error: $?)...${NC}\n"
 	RETVAL=-1
 fi
 return "${RETVAL}"
 }
 
 # Print function and parameters
-function	print_fct_with_params {
+print_fct_with_params() {
 shift
 printf "%s(" "$1"
 shift
@@ -77,7 +80,7 @@ printf "): "
 }
 
 # Print only parameters
-function	print_params {
+print_params() {
 shift; shift # skip function and function_name
 printf "("
 while [ "$#" -gt 0 ]
@@ -91,40 +94,43 @@ printf "): "
 }
 
 # Error output
-function print_error {
+print_error() {
 if [ "$1" -eq 139 ]; then
-	printf "${RED}%s\n${NC}" "Segfault (${ERRCODE})"
+	printf "${RED}%s${NC}\n" "Segfault (${ERRCODE})"
 elif [ "$1" -eq 134 ]; then
-	printf "${RED}%s\n${NC}" "Abort (${ERRCODE})"
+	printf "${RED}%s${NC}\n" "Abort (${ERRCODE})"
 elif [ "$1" -ne 0 ]; then
-	printf "${YELLOW}%s\n${NC}" "Unknown error"
+	printf "${YELLOW}%s${NC}\n" "Unknown error"
 fi
 }
 
 # Execute function
-function run_test {
-FCT=$1 # save function name
-FCT_V=$2 # save function type (libc or user)
-print_params $@ # print function parameters
+run_test() {
+FCT="$1" # save function name
+FCT_V="$2" # save function type (libc or user)
+print_params "$@" # print function parameters
 shift # remove function name from the list of parameters
 {
-	./out/${FCT}_test $@ # execute function with all parameters
+	./out/${FCT}_test "$@" # execute function with all parameters
 	ERRCODE=$?
 } 2> /dev/null # do not display errors on stderr
 print_error ${ERRCODE}
 }
 
 # Compare outputs
-function compare_outputs {
+compare_outputs() {
 	printf "Comparing outputs...\n"
 	diff ${OUTDIR}/output_$1_$1 ${OUTDIR}/output_$1_ft_$1 > ${OUTDIR}/diff_$1
 	if [ -s ${OUTDIR}/diff_${TEST_FCT} ]; then 
-		printf "${BLUE}${TEST_FCT}${NC}: ${RED}Failed: errors detected\n${NC}"
+		printf "${BLUE}${TEST_FCT}${NC}: ${RED}Failed: errors detected${NC}\n"
 		cat ${OUTDIR}/diff_${TEST_FCT}
 	else
-		printf "${BLUE}${TEST_FCT}${NC}: ${GREEN}Success\n${NC}"
+		printf "${BLUE}${TEST_FCT}${NC}: ${GREEN}Success${NC}\n"
 	fi
 }
+
+# Create output directory if non existant
+[ ! -d ${OUTDIR} ] && mkdir ${OUTDIR}
 
 ########################
 # FONCTIONS DE LA LIBC #
@@ -207,29 +213,36 @@ if [ "${TEST_FCT}" = "memcpy" ] || [ "${ALL}" = "1" ]; then
 	compile ${TEST_FCT}
 	RETVAL=$?
 	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
-		for fct in ${TEST_FCT} #ft_${TEST_FCT}
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
 		do
 			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
 			{
-			run_test ${TEST_FCT}, $fct, 100, "Chainedecaracteres", 5
+			run_test ${TEST_FCT} $fct null "String containing char" 0 #dst = NULL, src = char string (22), n = 0
+			run_test ${TEST_FCT} $fct null "String containing char" -1 #dst = NULL, src = char string (22), n = -1
+			run_test ${TEST_FCT} $fct null "String containing char" 5 #dst = NULL, src = char string (22), n = 5
+			run_test ${TEST_FCT} $fct null null 0 #dst = NULL, src = NULL, n = 0
+			run_test ${TEST_FCT} $fct null null -1 #dst = NULL, src = NULL, n = -1
+			run_test ${TEST_FCT} $fct null null 10 #dst = NULL, src = NULL, n = 10
+			run_test ${TEST_FCT} $fct 30 null 0 #dst = char string (30), src = NULL, n = 0
+			run_test ${TEST_FCT} $fct 30 null -1 #dst = char string (30), src = NULL, n = -1
+			run_test ${TEST_FCT} $fct 30 null 10 #dst = char string (30), src = NULL, n = 10
+			run_test ${TEST_FCT} $fct 30 "String containing char" 0 #dst = char string (30), src = char string (22), n = 0
+			run_test ${TEST_FCT} $fct 30 "String containing char" -1 #dst = char string (30), src = char string (22), n = -1
+			run_test ${TEST_FCT} $fct 30 "String containing char" 10 #dst = char string (30), src = char string (22), n = 10
+			run_test ${TEST_FCT} $fct 30 "String containing char" 100 #dst = char string (30), src = char string (22), n = 100 (n > src_len)
+			run_test ${TEST_FCT} $fct 30 "String containing char" 999999 #dst = char string (30), src = char string (22), n = 999999 (n > src_len)
+			run_test ${TEST_FCT} $fct 10 "String containing char" 5 #dst = char string (10), src = char string (22), n = 5
+			run_test ${TEST_FCT} $fct 10 "String containing char" 20 #dst = char string (10), src = char string (22), n = 20
+			run_test ${TEST_FCT} $fct 10 "String containing char" 150 #dst = char string (10), src = char string (22), n = 150
+			run_test ${TEST_FCT} $fct 10 "String containing char" ${INT_MAX} #dst = char string (10), src = char string (22), n = 2147483647
 			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
 			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 			if [ ${VERB} -eq 1 ]; then
 				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
-				cat -v ${OUTDIR}/output_${TEST_FCT}_${fct}
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
 		done
-		#compare_outputs ${TEST_FCT}
+		compare_outputs ${TEST_FCT}
 	fi
 fi
 
-function test_print {
-	echo "$#"
-}
-
-#test
-if [ "${TEST_FCT}" = test ]; then
-	OLDIFS=${IFS}
-	IFS=,
-	test_print un, deux et trois
-fi

@@ -12,28 +12,34 @@
 
 #include "libft.h"
 
-void	ft_select_fct(char *fct, char *dst, char *src, size_t n)
+void	*ft_select_fct(char *fct, char *dst, char *src, size_t n)
 {
+	char	*ret;
+
+	ret = NULL;
 	if (strcmp(fct, "memcpy") == 0)
 	{
-		memcpy(dst, src, n);
+		ret = (char *)memcpy(dst, src, n);
 	}
-//	else if (strcmp(fct, "ft_memset") == 0)
-//	{
-//		ft_memcpy(dst, src, n);
-//	}
+	else if (strcmp(fct, "ft_memcpy") == 0)
+	{
+		ret = (char *)ft_memcpy(dst, src, n);
+	}
+	return ((void *)ret);
 }
 
 int		main(int ac, char **av)
 {
 	char			*dst;
 	char			*src;
-	size_t			n;
+	char			*ret;
+	int				n;
 	char			*fct;
 	int				nb_arg;
 
 
 	nb_arg = 4;
+	ret = NULL;
 	if (ac != nb_arg + 1)
 	{
 		ft_putstr("Wrong number of arguments\nUsage: ./memcpy_test fct [null|dest_size] [null|src] n\n");
@@ -65,10 +71,15 @@ int		main(int ac, char **av)
 	else
 		src = NULL;
 	n = atoi(av[4]);
-	ft_select_fct(fct, dst, src, n);
+	ret = (char *)ft_select_fct(fct, dst, src, n);
 	if (strcmp(av[2], "null") != 0)
 	{
-		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]), "char");
+		ft_putstr("dest = ");
+		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
+		ft_putstr(" | ");
+		ft_putstr("ret = ");
+		ft_print_bytes(ret, sizeof(*dst) * atoi(av[2]));
+		ft_putchar('\n');
 	}
 	else
 		ft_putchar('\n');
