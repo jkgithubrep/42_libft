@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/16 17:56:12 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/18 18:19:19 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <stdlib.h>
 # include <string.h>
 
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
-void	ft_print_bytes(void *ptr, int size); //WARNING (printf)!
+void	ft_print_bytes(void *ptr, int size);
 void	ft_print_char(char *tab, int size);
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
@@ -28,6 +29,7 @@ void	ft_putendl_fd(char const *s, int fd);
 void    ft_putstr(char const *s);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putnbr(int n);
+void	ft_putnbr_base(int nbr, char *base);
 void	ft_putnbr_fd(int n, int fd);
 
 #endif

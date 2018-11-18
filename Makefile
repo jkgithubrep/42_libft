@@ -6,11 +6,9 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/16 15:51:13 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/18 18:16:08 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# !!!WARNING!!! ft_print_bytes.c CURRENTLY USING printf
 
 .PHONY: all, clean, fclean, re
 
@@ -30,6 +28,7 @@ OBJ_PATH = obj
 
 SRC_NAME = 	ft_bzero.c \
 			ft_memcpy.c \
+			ft_memccpy.c \
 			ft_memset.c \
 			ft_print_char.c \
 			ft_print_bytes.c \
@@ -39,7 +38,8 @@ SRC_NAME = 	ft_bzero.c \
 			ft_putnbr.c \
 			ft_putnbr_fd.c \
 			ft_putstr.c \
-			ft_putstr_fd.c
+			ft_putstr_fd.c \
+			ft_putnbr_base.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
