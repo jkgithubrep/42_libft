@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memccpy_test.c                                     :+:      :+:    :+:   */
+/*   memmove_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/18 16:41:55 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 12:13:45 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/19 10:46:44 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/19 12:08:41 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_select_fct(char *fct, char *dst, char *src, int c, size_t n)
+void	*ft_select_fct(char *fct, char *dst, char *src, size_t len)
 {
 	char	*ret;
 
 	ret = NULL;
-	if (strcmp(fct, "memccpy") == 0)
+	if (strcmp(fct, "memmove") == 0)
 	{
-		ret = (char *)memccpy(dst, src, c, n);
+		ret = (char *)memmove(dst, src, len);
 	}
-	else if (strcmp(fct, "ft_memccpy") == 0)
-	{
-		ret = (char *)ft_memccpy(dst, src, c, n);
-	}
+//	else if (strcmp(fct, "ft_memmove") == 0)
+//	{
+//		ret = (char *)ft_memmove(dst, src, len);
+//	}
 	return ((void *)ret);
 }
 
@@ -33,17 +33,16 @@ int		main(int ac, char **av)
 	char			*dst;
 	char			*src;
 	char			*ret;
-	int				n;
-	int				c;
+	int				len;
 	char			*fct;
 	int				nb_arg;
 
 
-	nb_arg = 5;
+	nb_arg = 4;
 	ret = NULL;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: ./memccpy_test fct [null|dest_size] [null|src] n\n");
+		ft_putstr("Wrong number of arguments\nUsage: ./memmove_test fct [null|dest_size] [null|src] n\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);
@@ -74,12 +73,8 @@ int		main(int ac, char **av)
 	}
 	else
 		src = NULL;
-	if (atoi(av[4]) == 0)
-		c = av[4][0];
-	else
-		c = atoi(av[4]);
-	n = atoi(av[5]);
-	ret = (char *)ft_select_fct(fct, dst, src, c, n);
+	len = atoi(av[4]);
+	ret = (char *)ft_select_fct(fct, dst, src, len);
 	if (strcmp(av[2], "null") != 0)
 	{
 		ft_putstr("dest = ");
@@ -91,6 +86,7 @@ int		main(int ac, char **av)
 		else
 			ft_print_bytes(ret, 1);
 	}
+	else
 	free(dst);
 	free(fct);
 	return (0);

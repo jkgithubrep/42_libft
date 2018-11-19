@@ -49,10 +49,12 @@ if [ "$#" -eq 2 ]; then
 		VERB=1
 	fi
 fi
+printf "\n"
 
 # Compilation
 compile() {
-echo "Compiling $1_test.c..."
+printf "#########################\n"
+printf "Compiling $1_test.c...\n"
 ${COMPILE} tests/"$1"_test.c -o out/"$1"_test ${LFLAGS} # lib flags after for ubuntu
 if [ $? -eq 0 ]; then
 	printf "${GREEN}$1_test.c compiled without errors${NC}\n"
@@ -61,6 +63,7 @@ else
 	printf "${RED}$1_test.c could not compile (Error: $?)${NC}\n"
 	RETVAL=-1
 fi
+printf "\n"
 return "${RETVAL}"
 }
 
@@ -114,7 +117,11 @@ shift # remove function name from the list of parameters
 	./out/${FCT}_test "$@" # execute function with all parameters
 	ERRCODE=$?
 } 2> /dev/null # do not display errors on stderr
-print_error ${ERRCODE}
+if [ ${ERRCODE} -eq 0 ]; then
+	printf "\n"
+else
+	print_error ${ERRCODE}
+fi
 }
 
 # Compare outputs
@@ -127,15 +134,12 @@ compare_outputs() {
 	else
 		printf "${BLUE}${TEST_FCT}${NC}: ${GREEN}Success${NC}\n"
 	fi
+	printf "\n"
 }
 
 # Print mini ascii table
 print_ascii_tbl(){
-case `uname` in
-	Linux)
-		man ascii | tail -39 | head -20
-		;;
-esac
+	cat ascii_table.txt
 }
 
 # Create output directory if non existant
@@ -160,7 +164,7 @@ if [ "${TEST_FCT}" = "memset" ] || [ "${ALL}" = "1" ]; then
 			run_test ${TEST_FCT} $fct null 97 10 # s = NULL, c = 97, len = 10
 			run_test ${TEST_FCT} $fct null 97 -1 # s = NULL, c = 97, len = -1
 			run_test ${TEST_FCT} $fct 0 97 0 # s = 0, c = 97, len = 0 (s_size = 0)
-			run_test ${TEST_FCT} $fct 0 97 -1 # s = 0, c = 97, len = -1 (s_size = 0, len < 0)
+			run_test ${TEST_FCT} $fct 0 97 0 # s = 0, c = 97, len = -1 (s_size = 0, len < 0)
 			run_test ${TEST_FCT} $fct 0 97 5 # s = 0, c = 97, len = 5 (s_size = 0, len > s_size)
 			run_test ${TEST_FCT} $fct 10 97 0 # s = 10, c = 97, len = 0
 			run_test ${TEST_FCT} $fct 10 97 -1 # s = 10, c = 97, len = -1 (len < 0)
@@ -176,6 +180,7 @@ if [ "${TEST_FCT}" = "memset" ] || [ "${ALL}" = "1" ]; then
 				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
+			printf "\n"
 		done
 		compare_outputs ${TEST_FCT}
 	fi
@@ -192,8 +197,8 @@ if [ "${TEST_FCT}" = "bzero" ] || [ "${ALL}" = "1" ]; then
 		do
 			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
 			{
-			run_test ${TEST_FCT} $fct 0 # s = NULL pointer, n = 0
-			run_test ${TEST_FCT} $fct 5 # s = NULL pointer, n = 5
+			run_test ${TEST_FCT} $fct null 0 # s = NULL pointer, n = 0
+			run_test ${TEST_FCT} $fct null 5 # s = NULL pointer, n = 5
 			run_test ${TEST_FCT} $fct 0 0 # s = 0 bytes string, n = 0
 			run_test ${TEST_FCT} $fct 0 10 # s = 0 bytes string, n = 10
 			run_test ${TEST_FCT} $fct 10 10 # s = 10 bytes string, n = 10
@@ -210,6 +215,7 @@ if [ "${TEST_FCT}" = "bzero" ] || [ "${ALL}" = "1" ]; then
 			if [ ${VERB} -eq 1 ]; then
 				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
+			printf "\n"
 		done
 		compare_outputs ${TEST_FCT}
 	fi
@@ -235,6 +241,7 @@ if [ "${TEST_FCT}" = "memcpy" ] || [ "${ALL}" = "1" ]; then
 			run_test ${TEST_FCT} $fct 30 null 0 #dst = char string (30), src = NULL, n = 0
 			run_test ${TEST_FCT} $fct 30 null -1 #dst = char string (30), src = NULL, n = -1
 			run_test ${TEST_FCT} $fct 30 null 10 #dst = char string (30), src = NULL, n = 10
+			run_test ${TEST_FCT} $fct 30 2 10 #dst = char string (30), src = dst + 2, n = 10
 			run_test ${TEST_FCT} $fct 30 "String containing char" 0 #dst = char string (30), src = char string (22), n = 0
 			run_test ${TEST_FCT} $fct 30 "String containing char" -1 #dst = char string (30), src = char string (22), n = -1
 			run_test ${TEST_FCT} $fct 30 "String containing char" 10 #dst = char string (30), src = char string (22), n = 10
@@ -250,6 +257,7 @@ if [ "${TEST_FCT}" = "memcpy" ] || [ "${ALL}" = "1" ]; then
 				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
+			printf "\n"
 		done
 		compare_outputs ${TEST_FCT}
 	fi
@@ -290,6 +298,102 @@ if [ "${TEST_FCT}" = "memccpy" ] || [ "${ALL}" = "1" ]; then
 				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
 				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
 			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# memmove
+if [ "${TEST_FCT}" = "memmove" ] || [ "${ALL}" = "2" ]; then
+	TEST_FCT="memmove"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} #ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct null null 0 #dst = null, src = null, len = 0
+				run_test ${TEST_FCT} $fct null null -1 #dst = null, src = null, len = -1
+				run_test ${TEST_FCT} $fct null null 10 #dst = null, src = null, len = 10
+				run_test ${TEST_FCT} $fct null "String containing char" 0 #dst = null, src = char string (22), len = 0
+				run_test ${TEST_FCT} $fct null "String containing char" -1 #dst = null, src = char string (22), len = -1
+				run_test ${TEST_FCT} $fct null "String containing char" 10 #dst = null, src = char string (22), len = 10
+				run_test ${TEST_FCT} $fct 30 null 0 #dst = char string (30), src = null, len = 0
+				run_test ${TEST_FCT} $fct 30 null -1 #dst = char string (30), src = null, len = -1
+				run_test ${TEST_FCT} $fct 30 null 10 #dst = char string (30), src = null, len = 10
+				run_test ${TEST_FCT} $fct 30 "String containing char" 0 #dst = char string (30), src = char string (22), len = 0
+				run_test ${TEST_FCT} $fct 30 "String containing char" -1 #dst = char string (30), src = char string (22), len = -1 (len < 0)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 10 #dst = char string (30), src = char string (22), len = 10 (len < src_size)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 22 #dst = char string (30), src = char string (22), len = 23 (len = src_size)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 26 #dst = char string (30), src = char string (22), len = 26 (src_size < len < dst_size)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 100 #dst = char string (30), src = char string (22), len = 100 (len > dst_size)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 9999 #dst = char string (30), src = char string (22), len = 9999 (len >> dst_size)
+				run_test ${TEST_FCT} $fct 30 "String containing char" 1000000 #dst = char string (30), src = char string (22), len = 1000000 (len >>> src_len)
+				run_test ${TEST_FCT} $fct 10 "String containing char" 22 #dst = char string (10), src = char string (22), len = 23 (dst_size < src_size)
+				run_test ${TEST_FCT} $fct 10 "String containing char" 26 #dst = char string (10), src = char string (22), len = 26 (dst_size < src_size)
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		#compare_outputs ${TEST_FCT}
+		print_ascii_tbl
+	fi
+fi
+
+# strlen
+if [ "${TEST_FCT}" = "strlen" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="strlen"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct null
+				run_test ${TEST_FCT} $fct ""
+				run_test ${TEST_FCT} $fct "This string contains 34 characters"
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# strdup
+if [ "${TEST_FCT}" = "strdup" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="strdup"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct null
+				run_test ${TEST_FCT} $fct ""
+				run_test ${TEST_FCT} $fct "This a string to copy"
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
 		done
 		compare_outputs ${TEST_FCT}
 	fi

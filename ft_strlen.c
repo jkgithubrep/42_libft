@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 16:17:52 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/19 18:14:18 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/19 19:24:37 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	ft_print_bytes(void *ptr, int size)
+size_t	ft_strlen(const char *s)
 {
-	char	*p;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	p = (char *)ptr;
-	while (i < size)
-	{
-		ft_putnbr_base(p[i], "0123456789ABCDEF");
-		ft_putchar(' ');
+	while (*s++)
 		i++;
-	}
+	return (i);
 }

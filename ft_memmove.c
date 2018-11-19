@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 16:17:52 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/19 10:51:49 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/19 16:14:20 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_print_bytes(void *ptr, int size)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*p;
-	int		i;
+	char		*tmp_dst;
+	const char	*tmp_src;
+	size_t		i;
 
 	i = 0;
-	p = (char *)ptr;
-	while (i < size)
+	tmp_dst = (char *)dst;
+	tmp_src = (const char *)src;
+	while (i < len)
 	{
-		ft_putnbr_base(p[i], "0123456789ABCDEF");
-		ft_putchar(' ');
-		i++;
+		
 	}
 }

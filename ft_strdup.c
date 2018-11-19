@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 16:17:52 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/19 19:25:27 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/19 19:54:25 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_bytes(void *ptr, int size)
+char	*ft_strdup(const char *s1)
 {
-	char	*p;
-	int		i;
+	size_t	i;
+	char	*s2;
 
+	s2 = (char *)malloc(sizeof(*s2) * (ft_strlen(s1) + 1));
+	if (s2 == NULL)
+		return (NULL);
 	i = 0;
-	p = (char *)ptr;
-	while (i < size)
+	while (s1[i])
 	{
-		ft_putnbr_base(p[i], "0123456789ABCDEF");
-		ft_putchar(' ');
+		s2[i] = s1[i];
 		i++;
 	}
+	s2[i] = 0;
+	return (s2);	
 }

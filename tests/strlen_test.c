@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero_test.c                                       :+:      :+:    :+:   */
+/*   strlen_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 18:55:53 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 12:55:08 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/19 18:18:03 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/19 19:24:35 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_select_fct(char *fct, char *s, size_t n)
+size_t	ft_select_fct(char *fct, const char *s)
 {
-	if (strcmp(fct, "bzero") == 0)
+	size_t	ret;
+
+	ret = 0;
+	if (strcmp(fct, "strlen") == 0)
 	{
-		bzero(s, n);
+		ret = strlen(s);
 	}
-	else if (strcmp(fct, "ft_bzero") == 0)
+	else if (strcmp(fct, "ft_strlen") == 0)
 	{
-		ft_bzero(s, n);
+		ret = ft_strlen(s);
 	}
+	return (ret);
 }
 
 int		main(int ac, char **av)
 {
-	char			*s;
-	int				n;
 	char			*fct;
+	size_t			ret;
 	int				nb_arg;
+	const char		*s;
 
-	nb_arg = 3;
+
+	nb_arg = 2;
+	ret = 0;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: bzero_test [string_size] nb_bytes\n");
+		ft_putstr("Wrong number of arguments\nUsage: ./strlen_test fct [s | null]\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);
@@ -43,26 +49,13 @@ int		main(int ac, char **av)
 		ft_putstr("strdup failed: could not get function name");
 		return (-1);
 	}
-	n = atoi(av[3]);
 	if (strcmp(av[2], "null") != 0)
-	{
-		s = (char *)malloc(sizeof(*s) * atoi(av[2]));
-		if (s == NULL)
-		{
-			ft_putstr("Memory allocation failed.\n");
-			return (-1);
-		}
-		else
-			ft_init_string(s, sizeof(*s) * atoi(av[2]));
-	}
+		s = av[2];
 	else
 		s = NULL;
-	ft_select_fct(fct, s, n);
-	ft_putstr("dest = ");
-	if (s == NULL)
-		ft_putstr("NULL");
-	else
-		ft_print_bytes(s, sizeof(*s) * atoi(av[2]));
-	free(s);
+	ret = ft_select_fct(fct, s);
+	ft_putstr("ret = ");
+	ft_putnbr(ret);
+	free(fct);
 	return (0);
 }

@@ -2,8 +2,8 @@
 
 ## Part 1 - Fonctions de la libc
 
-- [ ] memset
-- [ ] bzero
+- [x] memset
+- [x] bzero
 - [ ] memcpy
 - [ ] memccpy
 - [ ] memmove
@@ -66,3 +66,9 @@
 - [ ] ft\_lstadd
 - [ ] ft\_lstiter
 - [ ] ft\_lstmap
+
+## Other functions
+- [x] ft\_init\_string
+- [x] ft\_print\_bytes
+- [x] ft\_print\_bytes
+

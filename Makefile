@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/18 18:16:08 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/19 19:51:57 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
 OBJ_PATH = obj
 
 SRC_NAME = 	ft_bzero.c \
+			ft_init_string.c \
 			ft_memcpy.c \
 			ft_memccpy.c \
 			ft_memset.c \
@@ -39,7 +40,9 @@ SRC_NAME = 	ft_bzero.c \
 			ft_putnbr_fd.c \
 			ft_putstr.c \
 			ft_putstr_fd.c \
-			ft_putnbr_base.c
+			ft_putnbr_base.c \
+			ft_strdup.c \
+			ft_strlen.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

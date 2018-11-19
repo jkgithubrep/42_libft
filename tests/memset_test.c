@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 15:02:39 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/16 16:01:31 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:54:37 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,11 @@ int		main(int ac, char **av)
 	c = atoi(av[3]);
 	len = atoi(av[4]);
 	ft_select_fct(fct, b, c, len);
-	if (av[2][0] >= '0' && av[2][0] <= '9')
-	{
+	ft_putstr("dest = ");
+	if (b != NULL)
 		ft_print_bytes(b, atoi(av[2]));
-	}
 	else
-		ft_putchar('\n');
+		ft_putstr("NULL");
 	free(b);
 	return (0);
 }

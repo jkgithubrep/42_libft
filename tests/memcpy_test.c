@@ -6,10 +6,9 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:04:51 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/16 18:35:53 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/19 16:13:36 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_select_fct(char *fct, char *dst, char *src, size_t n)
@@ -60,29 +59,35 @@ int		main(int ac, char **av)
 			return (-1);
 		}
 		else
+		{
 			ft_bzero(dst, sizeof(*dst) * atoi(av[2]));
+			ft_init_string(dst, sizeof(*dst) * atoi(av[2]) - 1);
+		}
 	}
 	else
 		dst = NULL;
-	if (strcmp(av[3], "null") != 0)
-	{
-		src = av[3];
-	}
-	else
+	if (strcmp(av[3], "null") == 0)
 		src = NULL;
+	else if (av[3][0] >= '0' && av[3][0] <= '9')
+		src = dst + atoi(av[3]);
+	else
+		src = av[3];
 	n = atoi(av[4]);
 	ret = (char *)ft_select_fct(fct, dst, src, n);
 	if (strcmp(av[2], "null") != 0)
 	{
 		ft_putstr("dest = ");
-		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
+		if (dst == NULL)
+			ft_putstr("NULL");
+		else
+			ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
 		ft_putstr(" | ");
 		ft_putstr("ret = ");
-		ft_print_bytes(ret, sizeof(*dst) * atoi(av[2]));
-		ft_putchar('\n');
+		if (ret == NULL)
+			ft_putstr("NULL");
+		else
+			ft_print_bytes(ret, sizeof(*dst) * atoi(av[2]));
 	}
-	else
-		ft_putchar('\n');
 	free(dst);
 	free(fct);
 	return (0);
