@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 16:41:55 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 12:13:45 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/19 20:19:46 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		main(int ac, char **av)
 		else
 		{
 			ft_bzero(dst, sizeof(*dst) * atoi(av[2]));
-			ft_init_string(dst, sizeof(*dst) * atoi(av[2]) - 1);
+			ft_init_string(dst, sizeof(*dst) * (atoi(av[2]) - 1));
 		}
 	}
 	else

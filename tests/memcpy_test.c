@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:04:51 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 16:13:36 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/19 20:19:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -61,7 +61,7 @@ int		main(int ac, char **av)
 		else
 		{
 			ft_bzero(dst, sizeof(*dst) * atoi(av[2]));
-			ft_init_string(dst, sizeof(*dst) * atoi(av[2]) - 1);
+			ft_init_string(dst, sizeof(*dst) * (atoi(av[2]) - 1));
 		}
 	}
 	else
