@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/19 20:52:34 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/20 18:53:45 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,10 @@ SRC_NAME = 	ft_bzero.c \
 			ft_putstr.c \
 			ft_putstr_fd.c \
 			ft_putnbr_base.c \
+			ft_strcat.c \
+			ft_strchr.c \
+			ft_strlcat.c \
+			ft_strncat.c \
 			ft_strcpy.c \
 			ft_strncpy.c \
 			ft_strdup.c \

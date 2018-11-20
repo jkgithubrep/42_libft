@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 20:43:13 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/20 15:21:56 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/20 16:13:21 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/20 16:25:43 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncat(char *s, const char *append, size_t count)
 {
 	size_t	i;
+	size_t	s_len;
 
 	i = 0;
-	while (src[i] && i < len)
+	s_len =	ft_strlen(s);
+	while (i < count && append[i])
 	{
-		dst[i] = src[i];
+		s[s_len + i] = append[i];
 		i++;
 	}
-	while (i < len)
-	{
-		dst[i] = 0;
-		i++;
-	}
-	return (dst);
+	s[s_len + i] = 0;
+	return (s);
+
 }
