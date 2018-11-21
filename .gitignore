@@ -3,3 +3,4 @@ obj
 libft.a
 tests_output
 out
+*.swp

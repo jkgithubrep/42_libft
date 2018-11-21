@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/20 18:53:27 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:44:26 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 
 char	*ft_strcat(char *s, const char *append);
 char    *ft_strchr(const char *s, int c);
+char    *ft_strrchr(const char *s, int c);
 char	*ft_strncat(char *s, const char *append, size_t count);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
 char	*ft_strdup(const char *s1);
+char    *ft_strstr(const char *haystack, const char *needle);
 size_t  ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
 void    ft_init_string(char *dst, size_t size);

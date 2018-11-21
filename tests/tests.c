@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 18:32:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 10:53:02 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/21 11:01:07 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/21 11:10:39 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strchr(const char *s, int c)
+int		main(void)
 {
-	while(*s)
+	char c;
+
+	c = -128;
+	while (c <= 126)
 	{
-		if (*s == (char)c)
-			return ((char*)s);
-		s++;
+		write(1, &c, 1);	
+		c++;
 	}
-	return (((char)c == 0) ? (char *)s : NULL);
+	return (0);
 }
