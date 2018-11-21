@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/21 12:43:14 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/21 18:16:30 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,14 @@ SRC_NAME = 	ft_bzero.c \
 			ft_strncpy.c \
 			ft_strdup.c \
 			ft_strlen.c \
-			ft_strstr.c
+			ft_strstr.c \
+			ft_strnstr.c \
+			ft_strcmp.c \
+			ft_strncmp.c \
+			ft_atoi.c \
+			ft_isalpha.c \
+			ft_isupper.c \
+			ft_islower.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
