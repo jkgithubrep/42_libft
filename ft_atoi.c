@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 17:38:15 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 17:44:27 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 11:08:33 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int		ft_atoi(const char *str)
 {
 	int	neg;
 	int	res;
-	
+
 	neg = 1;
 	res = 0;
 	while (*str && (*str == '\v' || *str == '\r' || *str == '\f' || *str == ' '

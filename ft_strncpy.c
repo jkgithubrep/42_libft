@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:43:13 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/20 15:21:56 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 12:37:05 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	size_t	i;
 
 	i = 0;
-	while (src[i] && i < len)
+	while (i < len && src[i])
 	{
 		dst[i] = src[i];
 		i++;

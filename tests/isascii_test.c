@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha_test.c                                     :+:      :+:    :+:   */
+/*   isascii_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 11:31:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 11:35:34 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 11:50:02 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 11:50:47 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int		ft_select_fct(char *fct, int c)
 	int		ret;
 
 	ret = 0;
-	if (strcmp(fct, "isalpha") == 0)
+	if (strcmp(fct, "isascii") == 0)
 	{
-		ret = isalpha(c);
+		ret = isascii(c);
 	}
-	else if (strcmp(fct, "ft_isalpha") == 0)
+	else if (strcmp(fct, "ft_isascii") == 0)
 	{
-		ret = ft_isalpha(c);
+		ret = ft_isascii(c);
 	}
 	return (ret);
 }
@@ -40,7 +40,7 @@ int		main(int ac, char **av)
 	ret = 0;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: ./isalpha_test fct [ c | nbr]\n");
+		ft_putstr("Wrong number of arguments\nUsage: ./isascii_test fct [ c | nbr]\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);

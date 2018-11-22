@@ -19,17 +19,17 @@
 - [ ] strchr
 - [ ] strrchr
 - [ ] strstr
-- [ ] strnstr
-- [ ] strcmp
-- [ ] strncmp
-- [ ] atoi
-- [ ] isalpha
-- [ ] isdigit
-- [ ] isalnum
-- [ ] isascii
-- [ ] isprint
-- [ ] toupper
-- [ ] tolower
+- [x] strnstr
+- [x] strcmp
+- [x] strncmp
+- [x] atoi
+- [x] isalpha
+- [x] isdigit
+- [x] isalnum
+- [x] isascii
+- [x] isprint
+- [x] toupper
+- [x] tolower
 
 ## Part 2 - Fonctions supplémentaires
 

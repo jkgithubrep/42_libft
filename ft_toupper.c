@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 16:13:21 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 11:14:04 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 12:00:23 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 12:05:07 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *s, const char *append, size_t count)
+int		ft_toupper(int c)
 {
-	size_t	i;
-	size_t	s_len;
-
-	i = 0;
-	s_len = ft_strlen(s);
-	while (i < count && append[i])
-	{
-		s[s_len + i] = append[i];
-		i++;
-	}
-	s[s_len + i] = 0;
-	return (s);
+	return (ft_islower(c) ? c + ('A' - 'a') : c);
 }

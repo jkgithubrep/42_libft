@@ -1,12 +1,13 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha_test.c                                     :+:      :+:    :+:   */
+/*   tolower_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 11:31:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 11:35:34 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 12:02:29 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 12:04:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +18,13 @@ int		ft_select_fct(char *fct, int c)
 	int		ret;
 
 	ret = 0;
-	if (strcmp(fct, "isalpha") == 0)
+	if (strcmp(fct, "tolower") == 0)
 	{
-		ret = isalpha(c);
+		ret = tolower(c);
 	}
-	else if (strcmp(fct, "ft_isalpha") == 0)
+	else if (strcmp(fct, "ft_tolower") == 0)
 	{
-		ret = ft_isalpha(c);
+		ret = ft_tolower(c);
 	}
 	return (ret);
 }
@@ -40,7 +41,7 @@ int		main(int ac, char **av)
 	ret = 0;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: ./isalpha_test fct [ c | nbr]\n");
+		ft_putstr("Wrong number of arguments\nUsage: ./tolower_test fct [ c | nbr]\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);
@@ -56,6 +57,9 @@ int		main(int ac, char **av)
 	ret = ft_select_fct(fct, c);
 	ft_putstr("ret = ");
 	ft_putnbr(ret);
+	ft_putstr(" (");
+	ft_putchar(ret);
+	ft_putstr(")");
 	free(fct);
 	return (0);
 }

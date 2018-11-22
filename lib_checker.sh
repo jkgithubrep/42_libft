@@ -60,6 +60,7 @@ if [ $? -eq 0 ]; then
 	printf "${GREEN}$1_test.c compiled without errors${NC}\n"
 	RETVAL=0
 else
+	printf "· ${TEST_FCT}: ${RED}FAILED [Compilation]${NC}\n" >> ${OUTDIR}/output_summary
 	printf "${RED}$1_test.c could not compile (Error: $?)${NC}\n"
 	RETVAL=1
 fi
@@ -129,9 +130,11 @@ compare_outputs() {
 	printf "Comparing outputs...\n"
 	diff ${OUTDIR}/output_$1_$1 ${OUTDIR}/output_$1_ft_$1 > ${OUTDIR}/diff_$1
 	if [ -s ${OUTDIR}/diff_${TEST_FCT} ]; then 
+		printf "· ${TEST_FCT}: ${RED}FAILED${NC}\n" >> ${OUTDIR}/output_summary
 		printf "${BLUE}${TEST_FCT}${NC}: ${RED}Failed: outputs differ${NC}\n"
 		cat ${OUTDIR}/diff_${TEST_FCT}
 	else
+		printf "· ${TEST_FCT}: ${GREEN}OK${NC}\n" >> ${OUTDIR}/output_summary
 		printf "${BLUE}${TEST_FCT}${NC}: ${GREEN}Success${NC}\n"
 	fi
 	printf "\n"
@@ -142,8 +145,20 @@ print_ascii_tbl(){
 	cat ascii_table.txt
 }
 
+# Print output summary
+print_summary(){
+	printf "###########\n"
+	printf "# SUMMARY #\n"
+	printf "###########\n\n"
+	cat ${OUTDIR}/output_summary
+	printf "\n"
+}
+
 # Create output directory if non existant
 [ ! -d ${OUTDIR} ] && mkdir ${OUTDIR}
+
+# Erase output/output_summary
+printf "" > ${OUTDIR}/output_summary
 
 ########################
 # FONCTIONS DE LA LIBC #
@@ -979,3 +994,247 @@ if [ "${TEST_FCT}" = "isalpha" ] || [ "${ALL}" = "1" ]; then
 	fi
 fi
 
+# isdigit
+if [ "${TEST_FCT}" = "isdigit" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="isdigit"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# isalnum
+if [ "${TEST_FCT}" = "isalnum" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="isalnum"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# isascii
+if [ "${TEST_FCT}" = "isascii" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="isascii"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# isprint
+if [ "${TEST_FCT}" = "isprint" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="isprint"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '\t'
+				run_test ${TEST_FCT} $fct '\v'
+				run_test ${TEST_FCT} $fct '\n'
+				run_test ${TEST_FCT} $fct ' '
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 123
+				run_test ${TEST_FCT} $fct 127
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# toupper
+if [ "${TEST_FCT}" = "toupper" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="toupper"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '\t'
+				run_test ${TEST_FCT} $fct '\v'
+				run_test ${TEST_FCT} $fct '\n'
+				run_test ${TEST_FCT} $fct ' '
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'n'
+				run_test ${TEST_FCT} $fct 'z'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 123
+				run_test ${TEST_FCT} $fct 127
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# tolower
+if [ "${TEST_FCT}" = "tolower" ] || [ "${ALL}" = "1" ]; then
+	TEST_FCT="tolower"
+	RETVAL=0
+	compile ${TEST_FCT}
+	RETVAL=$?
+	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
+		for fct in ${TEST_FCT} ft_${TEST_FCT}
+		do
+			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
+			{
+				run_test ${TEST_FCT} $fct ''
+				run_test ${TEST_FCT} $fct '\t'
+				run_test ${TEST_FCT} $fct '\v'
+				run_test ${TEST_FCT} $fct '\n'
+				run_test ${TEST_FCT} $fct ' '
+				run_test ${TEST_FCT} $fct '0'
+				run_test ${TEST_FCT} $fct '1'
+				run_test ${TEST_FCT} $fct '5'
+				run_test ${TEST_FCT} $fct '9'
+				run_test ${TEST_FCT} $fct '%'
+				run_test ${TEST_FCT} $fct 'a'
+				run_test ${TEST_FCT} $fct 'n'
+				run_test ${TEST_FCT} $fct 'z'
+				run_test ${TEST_FCT} $fct 'A'
+				run_test ${TEST_FCT} $fct 'N'
+				run_test ${TEST_FCT} $fct 'Z'
+				run_test ${TEST_FCT} $fct 65
+				run_test ${TEST_FCT} $fct 123
+				run_test ${TEST_FCT} $fct 127
+				run_test ${TEST_FCT} $fct 2625 # 2625 = 65 + 256 * 10
+				run_test ${TEST_FCT} $fct 123456
+				run_test ${TEST_FCT} $fct ${INT_MIN}
+				run_test ${TEST_FCT} $fct ${INT_MAX}
+			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
+			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
+			if [ ${VERB} -eq 1 ]; then
+				printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
+				cat ${OUTDIR}/output_${TEST_FCT}_${fct}
+			fi
+			printf "\n"
+		done
+		compare_outputs ${TEST_FCT}
+	fi
+fi
+
+# Display summary
+if [ "${ALL}" -eq 1 ]; then
+print_summary
+fi

@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 18:32:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 10:53:02 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 11:12:43 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while(*s)
+	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char*)s);

@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 17:59:29 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 18:16:53 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 11:11:05 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int		ft_isalpha(int c)
 {
-	return ((ft_islower(c) || ft_isupper(c)) ? 1 : 0);	
+	return ((ft_islower(c) || ft_isupper(c)));
 }

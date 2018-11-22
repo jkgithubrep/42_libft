@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 18:16:30 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 12:10:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@ char    *ft_strstr(const char *haystack, const char *needle);
 char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
 int     ft_atoi(const char *str);
 int		ft_isalpha(int c);
+int     ft_isdigit(int c);
+int     ft_isalnum(int c);
+int     ft_isascii(int c);
 int		ft_islower(int c);
 int		ft_isupper(int c);
+int		ft_isprint(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 int     ft_strcmp(const char *s1, const char *s2);
 int     ft_strncmp(const char *s1, const char *s2, size_t len);
 size_t  ft_strlcat(char *dst, const char *src, size_t dstsize);
