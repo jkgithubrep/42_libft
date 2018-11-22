@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:41:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 20:14:06 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 15:42:37 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 15:53:01 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		main(int ac, char **av)
 {
-	char		*tmp_dst;
-	const char	*tmp_src;
-	size_t		i;
+	char	*ret;
+	int		n;
+	int		nb_arg;
 
-	tmp_dst = (char *)dst;
-	tmp_src = (const char *)src;
-	i = 0;
-	while (i < n)
+
+	nb_arg = 1;
+	ret = NULL;
+	if (ac != nb_arg + 1)
 	{
-		tmp_dst[i] = tmp_src[i];
-		i++;
-	}
-	return (dst);
+		ft_putstr("Wrong number of arguments\nUsage: ./ft_memalloc_test size_t \n");
+		return (-1);
+	}	
+	n = atoi(av[1]);
+	ret = (char *)ft_memalloc(n);
+	ft_putstr("ret = ");
+	if (ret == NULL)
+		ft_putstr("NULL");
+	else
+		ft_print_bytes(ret, n);
+	return (0);
 }

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:41:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 20:14:06 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 17:51:34 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 19:50:45 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char		*tmp_dst;
-	const char	*tmp_src;
-	size_t		i;
+	size_t	i;
+	char	*s2;
 
-	tmp_dst = (char *)dst;
-	tmp_src = (const char *)src;
+	s2 = (char *)ft_memalloc(len + 1);
+	if (s2 == NULL)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		tmp_dst[i] = tmp_src[i];
+		s2[i] = s[start + i];
 		i++;
 	}
-	return (dst);
+	s2[i] = 0;
+	return (s2);
 }

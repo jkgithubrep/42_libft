@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 15:02:39 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 13:54:37 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:06:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int		main(int ac, char **av)
 		ft_putstr("strdup failed: could not get function name");
 		return (-1);
 	}
-	if (av[2][0] >= '0' && av[2][0] <= '9')
+	if (strcmp(av[2], "null") == 0)
+		b = NULL;
+	else
 	{
 		b = (unsigned char *)malloc(sizeof(*b) * atoi(av[2]));
 		if (b == NULL)
@@ -56,8 +58,6 @@ int		main(int ac, char **av)
 		else
 			ft_bzero(b, sizeof(*b) * atoi(av[2]));
 	}
-	else
-		b = NULL;
 	c = atoi(av[3]);
 	len = atoi(av[4]);
 	ft_select_fct(fct, b, c, len);

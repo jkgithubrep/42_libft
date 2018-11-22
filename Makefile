@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/22 12:10:24 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/22 19:47:34 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,25 @@ SRC_NAME = 	ft_bzero.c \
 			ft_isascii.c \
 			ft_isprint.c \
 			ft_toupper.c \
-			ft_tolower.c
+			ft_tolower.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_memalloc.c \
+			ft_memdel.c \
+			ft_strnew.c \
+			ft_strdel.c \
+			ft_strclr.c \
+			ft_striter.c \
+			ft_striteri.c \
+			ft_strmap.c \
+			ft_strmapi.c \
+			ft_strequ.c \
+			ft_strnequ.c \
+			ft_strsub.c \
+			ft_strjoin.c \
+			ft_strtrim.c \
+			ft_strsplit.c \
+			ft_itoa.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

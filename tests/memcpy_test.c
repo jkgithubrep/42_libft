@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:04:51 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 20:19:29 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:09:15 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -68,7 +68,7 @@ int		main(int ac, char **av)
 		dst = NULL;
 	if (strcmp(av[3], "null") == 0)
 		src = NULL;
-	else if (av[3][0] >= '0' && av[3][0] <= '9')
+	else if ((av[3][0] >= '0' && av[3][0] <= '9') || av[3][0] == '-' || av[3][0] == '+')
 		src = dst + atoi(av[3]);
 	else
 		src = av[3];

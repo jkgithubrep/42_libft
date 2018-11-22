@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:41:07 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 20:14:06 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/22 18:05:35 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/22 19:51:34 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strtrim(char const *s)
 {
-	char		*tmp_dst;
-	const char	*tmp_src;
-	size_t		i;
+	unsigned int	i;
+	unsigned int	start;
+	unsigned int	end;
+	unsigned int	s_len;
+	char			*s2;
 
-	tmp_dst = (char *)dst;
-	tmp_src = (const char *)src;
 	i = 0;
-	while (i < n)
-	{
-		tmp_dst[i] = tmp_src[i];
+	s_len = ft_strlen(s);
+	while (s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
 		i++;
-	}
-	return (dst);
+	start = i;
+	i = s_len;
+	while (i > 0 && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		i--;
+	end = i;
+	s2 = ft_strsub(s, start, end - start + 1);
+	if (s2 == NULL)
+		return (NULL);
+	return (s2);
 }
