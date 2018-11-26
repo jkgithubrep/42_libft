@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:14:11 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 15:30:53 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/26 14:59:52 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	ft_putnbr(int n)
 {
-	if (n < 0)
+
+	long	ln;
+
+	ln = n;
+	if (ln < 0)
 	{
 		ft_putchar('-');
-		if (n == -2147483648)
-		{
-			ft_putchar('2');
-			ft_putnbr(147483648);
-		}
-		else
-			ft_putnbr(-n);
+		ln *= -1;
 	}
-	else if (n > 9)
+	if (n > 9)
 	{
-		ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
+		ft_putnbr(ln / 10);
+		ft_putchar((ln % 10) + '0');
 	}
 	else
-		ft_putchar(n + '0');
+		ft_putchar(ln + '0');
 }
