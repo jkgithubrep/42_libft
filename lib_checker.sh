@@ -97,20 +97,6 @@ done
 printf "): "
 }
 
-# Print only parameters for other functions
-print_params_other() {
-shift # skip function
-printf "("
-while [ "$#" -gt 0 ]
-do
-	printf "%s" "$1"
-	[ "$#" -gt 1 ] \
-		&& printf ", "
-	shift
-done
-printf "): "
-}
-
 # Error output
 print_error() {
 if [ "$1" -eq 139 ]; then
@@ -323,6 +309,7 @@ if [ "${TEST_FCT}" = "memccpy" ] || [ "${ALL}" = "1" ]; then
 				run_test_libc ${TEST_FCT} $fct null null ${INT_MAX} 0 #dst = null, src = null, c = 2147483647, n = 0
 				run_test_libc ${TEST_FCT} $fct null null 'a' -1 #dst = null, src = null, c = 'a' (97), n = -1
 				run_test_libc ${TEST_FCT} $fct null null 'a' 10 #dst = null, src = null, c = 'a' (97), n = 10
+				run_test_libc ${TEST_FCT} $fct null null 97 10 #dst = null, src = null, c = 'a' (97), n = 10
 				run_test_libc ${TEST_FCT} $fct null "String containing char" 'a' 0 #dst = null, src = char string (22), c = 'a' (97), n = 0
 				run_test_libc ${TEST_FCT} $fct null "String containing char" 'a' -1 #dst = null, src = char string (22), c = 'a' (97), n = -1
 				run_test_libc ${TEST_FCT} $fct null "String containing char" 'a' 10 #dst = null, src = char string (22), c = 'a' (97), n = 10
@@ -1378,29 +1365,6 @@ if [ "${TEST_FCT}" = "tolower" ] || [ "${ALL}" = "1" ]; then
 		compare_outputs ${TEST_FCT}
 	fi
 fi
-
-# ft_memalloc
-if [ "${TEST_FCT}" = "ft_memalloc" ] || [ "${ALL}" = "2" ]; then
-	TEST_FCT="ft_memalloc"
-	RETVAL=0
-	compile ${TEST_FCT}
-	RETVAL=$?
-	if [ ${RETVAL} -eq 0 ]; then # if file compiled without errors
-		printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
-		{
-			run_test_other ${TEST_FCT} 0
-			run_test_other ${TEST_FCT} 2
-			run_test_other ${TEST_FCT} 10
-		} > ${OUTDIR}/output_${TEST_FCT}_${fct}
-		printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
-		if [ ${VERB} -eq 1 ]; then
-			printf "Printing ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}...\n"
-			cat ${OUTDIR}/output_${TEST_FCT}_${fct}
-		fi
-		printf "\n"
-	fi
-fi
-
 
 # Display summary
 if [ "${ALL}" -eq 1 ]; then

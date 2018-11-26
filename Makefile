@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/22 19:47:34 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/26 21:37:54 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ SRC_NAME = 	ft_bzero.c \
 			ft_strjoin.c \
 			ft_strtrim.c \
 			ft_strsplit.c \
-			ft_itoa.c
+			ft_itoa.c \
+			ft_memmove.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

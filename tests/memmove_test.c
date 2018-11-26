@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:46:44 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 20:20:06 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/26 21:37:02 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	*ft_select_fct(char *fct, char *dst, char *src, size_t len)
 	{
 		ret = (char *)memmove(dst, src, len);
 	}
-//	else if (strcmp(fct, "ft_memmove") == 0)
-//	{
-//		ret = (char *)ft_memmove(dst, src, len);
-//	}
+	else if (strcmp(fct, "ft_memmove") == 0)
+	{
+		ret = (char *)ft_memmove(dst, src, len);
+	}
 	return ((void *)ret);
 }
 
@@ -75,18 +75,17 @@ int		main(int ac, char **av)
 		src = NULL;
 	len = atoi(av[4]);
 	ret = (char *)ft_select_fct(fct, dst, src, len);
-	if (strcmp(av[2], "null") != 0)
-	{
-		ft_putstr("dest = ");
-		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
-		ft_putstr(" | ");
-		ft_putstr("ret = ");
-		if (ret == NULL)
-			ft_putstr("NULL");
-		else
-			ft_print_bytes(ret, 1);
-	}
+	ft_putstr("dest = ");
+	if (dst == NULL)
+		ft_putstr("NULL");
 	else
+		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
+	ft_putstr(" | ");
+	ft_putstr("ret = ");
+	if (ret == NULL)
+		ft_putstr("NULL");
+	else
+		ft_print_bytes(ret, 1);
 	free(dst);
 	free(fct);
 	return (0);
