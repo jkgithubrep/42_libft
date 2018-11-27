@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:58:21 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 19:51:13 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 16:00:09 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s3;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	s3 = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (s3 == NULL)
 		return (NULL);

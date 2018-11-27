@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   memmove_test_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:01:34 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 15:30:30 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/27 13:35:56 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/27 13:55:08 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
+#include <stdio.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int		main(void)
 {
-	char			*s2;
-	unsigned int	i;
+	char	*src = "first string to test!\n\r";
+	char	dst1[100];
+	char	dst2[100];
+	int		size = strlen(src);
 
-	if (s == NULL)
-		return (NULL);
-	s2 = (char *)ft_memalloc(ft_strlen(s) + 1);
-	if (s2 == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	bzero(dst1, 100);
+	bzero(dst2, 100);
+	memmove(dst1, src, size);
+	ft_memmove(dst2, src, size);
+	if (memcmp(dst1, dst2, size) == 0)
+		printf("Success\n");
+	else 
 	{
-		s2[i] = f(i, s[i]);
-		i++;
+		printf("Failed\n");
+		print_bytes(dst1, size);
+		printf("\n");
+		print_bytes(dst2, size);
 	}
-	s2[i] = 0;
-	return (s2);
+	return (0);
 }

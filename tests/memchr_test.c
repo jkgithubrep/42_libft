@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:31:30 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 15:26:45 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 10:11:43 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ void	*ft_select_fct(char *fct, const char *s, int c, size_t n)
 
 	ret = NULL;
 	if (strcmp(fct, "memchr") == 0)
-	{
 		ret = (char *)memchr(s, c, n);
-	}
 	else if (strcmp(fct, "ft_memchr") == 0)
-	{
 		ret = (char *)ft_memchr(s, c, n);
-	}
 	return ((void *)ret);
 }
 
@@ -55,10 +51,7 @@ int		main(int ac, char **av)
 		s = av[2];
 	else
 		s = NULL;
-	if ((av[3][0] >= '0' && av[3][0] <= '9') || av[3][0] == '-' || av[3][0] == '+')
-		c = atoi(av[3]);
-	else
-		c = av[3][0];
+	c = atoi(av[3]);
 	n = atoi(av[4]);
 	ret = (char *)ft_select_fct(fct, s, c, n);
 	ft_putstr("ret = ");

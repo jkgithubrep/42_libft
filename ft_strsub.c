@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:51:34 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 19:50:45 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 15:34:47 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*s2;
 
+	if (s == NULL)
+		return (NULL);
 	s2 = (char *)ft_memalloc(len + 1);
 	if (s2 == NULL)
 		return (NULL);

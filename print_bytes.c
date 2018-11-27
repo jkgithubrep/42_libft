@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   print_bytes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:01:34 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 15:30:30 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/27 10:35:16 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/27 12:38:18 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	print_bytes(const void *s, size_t len)
 {
-	char			*s2;
-	unsigned int	i;
+	const unsigned char	*tmp_s;	
+	size_t				i;
 
-	if (s == NULL)
-		return (NULL);
-	s2 = (char *)ft_memalloc(ft_strlen(s) + 1);
-	if (s2 == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	if (s != NULL && len != 0)
 	{
-		s2[i] = f(i, s[i]);
-		i++;
+		i = 0;
+		tmp_s = (const unsigned char *)s;
+		while (i < len)
+		{
+			printf("%hhX ", tmp_s[i]);
+			i++;
+		}
 	}
-	s2[i] = 0;
-	return (s2);
 }

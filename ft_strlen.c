@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 18:14:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/19 19:24:37 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 10:35:08 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
+	len = 0;
 	while (*s++)
-		i++;
-	return (i);
+		len++;
+	return (len);
 }

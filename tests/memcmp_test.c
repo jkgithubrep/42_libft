@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:26:12 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 15:27:43 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 10:18:12 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ int		ft_select_fct(char *fct, const char *s1, const char *s2, size_t n)
 
 	ret = 0;
 	if (strcmp(fct, "memcmp") == 0)
-	{
 		ret = memcmp(s1, s2, n);
-	}
 	else if (strcmp(fct, "ft_memcmp") == 0)
-	{
 		ret = ft_memcmp(s1, s2, n);
-	}
 	return (ret);
 }
 
@@ -32,9 +28,9 @@ int		main(int ac, char **av)
 {
 	char		*s1;
 	char		*s2;
+	char		*fct;
 	int			ret;
 	int			n;
-	char		*fct;
 	int			nb_arg;
 
 

@@ -6,11 +6,12 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:46:44 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/26 21:37:02 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 13:03:32 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	*ft_select_fct(char *fct, char *dst, char *src, size_t len)
 {
@@ -18,13 +19,9 @@ void	*ft_select_fct(char *fct, char *dst, char *src, size_t len)
 
 	ret = NULL;
 	if (strcmp(fct, "memmove") == 0)
-	{
 		ret = (char *)memmove(dst, src, len);
-	}
 	else if (strcmp(fct, "ft_memmove") == 0)
-	{
 		ret = (char *)ft_memmove(dst, src, len);
-	}
 	return ((void *)ret);
 }
 
@@ -42,13 +39,13 @@ int		main(int ac, char **av)
 	ret = NULL;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: ./memmove_test fct [null|dest_size] [null|src] n\n");
+		printf("Wrong number of arguments\nUsage: ./memmove_test fct [null|dest_size] [null|src] n\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);
 	if (fct == NULL)
 	{
-		ft_putstr("strdup failed: could not get function name");
+		printf("strdup failed: could not get function name");
 		return (-1);
 	}
 	if (strcmp(av[2], "null") != 0)
@@ -56,7 +53,7 @@ int		main(int ac, char **av)
 		dst = (char *)malloc(sizeof(*dst) * atoi(av[2]));
 		if (dst == NULL)
 		{
-			ft_putstr("Memory allocation failed\n");
+			printf("Memory allocation failed\n");
 			return (-1);
 		}
 		else
@@ -75,17 +72,17 @@ int		main(int ac, char **av)
 		src = NULL;
 	len = atoi(av[4]);
 	ret = (char *)ft_select_fct(fct, dst, src, len);
-	ft_putstr("dest = ");
+	printf("dest = ");
 	if (dst == NULL)
-		ft_putstr("NULL");
+		printf("NULL");
 	else
-		ft_print_bytes(dst, sizeof(*dst) * atoi(av[2]));
-	ft_putstr(" | ");
-	ft_putstr("ret = ");
+		print_bytes(dst, sizeof(*dst) * atoi(av[2]));
+	printf(" | ");
+	printf("ret = ");
 	if (ret == NULL)
-		ft_putstr("NULL");
+		printf("NULL");
 	else
-		ft_print_bytes(ret, 1);
+		print_bytes(ret, 1);
 	free(dst);
 	free(fct);
 	return (0);

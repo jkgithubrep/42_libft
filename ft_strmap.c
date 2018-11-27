@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:51:08 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 19:29:00 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 15:30:39 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char			*s2;
 	unsigned int	i;
 
-	s2 = (char *)malloc(sizeof(*s2) * (ft_strlen(s) + 1));
+	if (s == NULL)
+		return (NULL);
+	s2 = (char *)ft_memalloc(ft_strlen(s) + 1);
 	if (s2 == NULL)
 		return (NULL);
 	i = 0;

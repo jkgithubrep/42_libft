@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:28:40 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 20:01:26 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 16:00:01 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char	*ft_strnew(size_t size)
 	s = (char *)malloc(sizeof(*s) * (size + 1));
 	if (s == NULL)
 		return (NULL);
-	bzero(s, size + 1);
+	ft_bzero(s, size + 1);
 	return (s);
 }

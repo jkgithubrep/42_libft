@@ -366,6 +366,7 @@ if [ "${TEST_FCT}" = "memmove" ] || [ "${ALL}" = "1" ]; then
 				run_test_libc ${TEST_FCT} $fct 30 "String containing char" 1000000 #dst = char string (30), src = char string (22), len = 1000000 (len >>> src_len)
 				run_test_libc ${TEST_FCT} $fct 10 "String containing char" 22 #dst = char string (10), src = char string (22), len = 23 (dst_size < src_size)
 				run_test_libc ${TEST_FCT} $fct 10 "String containing char" 26 #dst = char string (10), src = char string (22), len = 26 (dst_size < src_size)
+				run_test_libc ${TEST_FCT} $fct 240 "this is a good nyancat !\r\n" 28
 			} > ${OUTDIR}/output_${TEST_FCT}_${fct}
 			printf "All tests for ${MAGENTA}$fct${NC} saved in ${MAGENTA}${OUTDIR}/output_${TEST_FCT}_${fct}${NC}\n"
 			if [ ${VERB} -eq 1 ]; then
@@ -389,24 +390,22 @@ if [ "${TEST_FCT}" = "memchr" ] || [ "${ALL}" = "1" ]; then
 		do
 			printf "Starting tests for ${MAGENTA}$fct${NC}...\n"
 			{
-				run_test_libc ${TEST_FCT} $fct null 65 0
-				run_test_libc ${TEST_FCT} $fct null 65 2
-				run_test_libc ${TEST_FCT} $fct null 65 -1
-				run_test_libc ${TEST_FCT} $fct "" 65 0
-				run_test_libc ${TEST_FCT} $fct "" 65 -1
-				run_test_libc ${TEST_FCT} $fct "" 65 5
+				run_test_libc ${TEST_FCT} $fct null 65 0 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct null 65 2 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct null 65 -1 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "" 65 0 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "" 65 -1 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "" 65 5 #(65 = 'A')
 				run_test_libc ${TEST_FCT} $fct "ABC" 0 1
 				run_test_libc ${TEST_FCT} $fct "ABC" 0 3
 				run_test_libc ${TEST_FCT} $fct "ABC" 0 5
-				run_test_libc ${TEST_FCT} $fct "ABC" 65 0
-				run_test_libc ${TEST_FCT} $fct "ABC" 65 -1
-				run_test_libc ${TEST_FCT} $fct "ABC" 65 3
-				run_test_libc ${TEST_FCT} $fct "ABC" 'A' 3
-				run_test_libc ${TEST_FCT} $fct "ABC" 65 5
-				run_test_libc ${TEST_FCT} $fct "ABC" 'D' 3
-				run_test_libc ${TEST_FCT} $fct "ABC" 'D' 10
-				run_test_libc ${TEST_FCT} $fct "ABC" 68 10
-				run_test_libc ${TEST_FCT} $fct "ABC" 70 3
+				run_test_libc ${TEST_FCT} $fct "ABC" 65 0 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "ABC" 65 -1 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "ABC" 65 3 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "ABC" 65 5 #(65 = 'A')
+				run_test_libc ${TEST_FCT} $fct "ABC" 68 3 #(68 = 'D')
+				run_test_libc ${TEST_FCT} $fct "ABC" 68 10 #(68 = 'D')
+				run_test_libc ${TEST_FCT} $fct "ABC" 70 3 #(70 = 'F')
 				run_test_libc ${TEST_FCT} $fct "ABC" ${INT_MIN} 3
 				run_test_libc ${TEST_FCT} $fct "ABC" ${INT_MAX} 3
 			} > ${OUTDIR}/output_${TEST_FCT}_${fct}

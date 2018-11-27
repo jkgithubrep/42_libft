@@ -6,22 +6,19 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 18:55:53 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 14:02:22 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 11:09:07 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	ft_select_fct(char *fct, char *s, size_t n)
 {
 	if (strcmp(fct, "bzero") == 0)
-	{
 		bzero(s, n);
-	}
 	else if (strcmp(fct, "ft_bzero") == 0)
-	{
 		ft_bzero(s, n);
-	}
 }
 
 int		main(int ac, char **av)
@@ -34,13 +31,13 @@ int		main(int ac, char **av)
 	nb_arg = 3;
 	if (ac != nb_arg + 1)
 	{
-		ft_putstr("Wrong number of arguments\nUsage: bzero_test [string_size] nb_bytes\n");
+		printf("Wrong number of arguments\nUsage: bzero_test [string_size] nb_bytes\n");
 		return (-1);
 	}	
 	fct = strdup(av[1]);
 	if (fct == NULL)
 	{
-		ft_putstr("strdup failed: could not get function name");
+		printf("strdup failed: could not get function name");
 		return (-1);
 	}
 	n = atoi(av[3]);
@@ -49,7 +46,7 @@ int		main(int ac, char **av)
 		s = (char *)malloc(sizeof(*s) * atoi(av[2]));
 		if (s == NULL)
 		{
-			ft_putstr("Memory allocation failed.\n");
+			printf("Memory allocation failed.\n");
 			return (-1);
 		}
 		else
@@ -58,11 +55,11 @@ int		main(int ac, char **av)
 	else
 		s = NULL;
 	ft_select_fct(fct, s, n);
-	ft_putstr("dest = ");
+	printf("dest = ");
 	if (s == NULL)
-		ft_putstr("NULL");
+		printf("NULL");
 	else
-		ft_print_bytes(s, sizeof(*s) * atoi(av[2]));
+		print_bytes(s, sizeof(*s) * atoi(av[2]));
 	free(s);
 	return (0);
 }

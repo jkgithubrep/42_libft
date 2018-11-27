@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:11:09 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/12 14:23:03 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 15:38:37 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_putstr(char const *s)
 {
-	while (*s)
-	{
-		write(1, s, 1);
-		s++;
-	}
+	if (s != NULL)
+		write(1, s, ft_strlen(s));
 }

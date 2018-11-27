@@ -6,12 +6,15 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:42:19 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 16:44:39 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/27 15:39:41 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 void	ft_striter(char *s, void (*f)(char *))
 {
-	while (*s)
-		f(s++);
+	if (s != NULL)
+		while (*s)
+			f(s++);
 }
