@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 10:35:16 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 12:38:18 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 15:17:45 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_bytes(const void *s, size_t len)
 {
-	const unsigned char	*tmp_s;	
+	const unsigned char	*tmp_s;
 	size_t				i;
 
 	if (s != NULL && len != 0)
