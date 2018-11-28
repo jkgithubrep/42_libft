@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 21:06:48 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 21:49:27 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 15:01:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	if (lst)
 	{
 		tmp = f(lst);
-		if ((lst2 = ft_lstnew(tmp->content, tmp->content_size)) == NULL)
+		if (!(lst2 = ft_lstnew(tmp->content, tmp->content_size)))
 			return (NULL);
 		lst2_begin = lst2;
 		lst = lst->next;
 	}
 	while (lst)
 	{
-		tmp = f(lst);			
-		if((lst2->next = ft_lstnew(tmp->content, tmp->content_size)) == NULL)
+		tmp = f(lst);
+		if (!(lst2->next = ft_lstnew(tmp->content, tmp->content_size)))
 			return (NULL);
 		lst = lst->next;
 		lst2 = lst2->next;

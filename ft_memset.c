@@ -6,11 +6,11 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:28:44 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/26 20:30:01 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:56:46 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {

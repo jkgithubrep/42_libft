@@ -5,62 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 19:15:28 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 19:53:11 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/28 10:24:06 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/28 14:53:02 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-unsigned int	ft_str_size(int n)
+static size_t	nb_digit(int n)
 {
-	long			a;
-	unsigned int	neg;
+	size_t	count;
+	long	nb;
 
-	a = n;
-	neg = 1;
-	if (a < 0)
+	count = 1;
+	nb = n;
+	nb = (nb < 0) ? -nb : nb;
+	while (nb >= 10)
 	{
-		neg++;
-		a *= -1;
+		count++;
+		nb /= 10;
 	}
-	if (a > 9)
-	{
-		return (neg + ft_str_size(a / 10));
-	}
-	else
-		return (neg);
-}
-
-void			ft_fill_str(int n, char *str, int i)
-{
-	long	a;
-
-	a = n;
-	if (a < 0)
-	{
-		str[0] = '-';
-		a *= -1;
-	}
-	if (a > 9)
-	{
-		ft_fill_str(a / 10, str, i - 1);
-		str[i] = (a % 10) + '0';
-	}
-	else
-		str[i] = (a % 10) + '0';
+	return (count);
 }
 
 char			*ft_itoa(int n)
 {
-	unsigned int	size;
-	char			*str;
+	size_t	count;
+	char	*str;
+	int		neg;
+	long	nb;
 
-	size = ft_str_size(n);
-	str = (char *)malloc(sizeof(*str) * (size + 1));
-	if (str == NULL)
+	neg = (n < 0) ? 1 : 0;
+	count = nb_digit(n);
+	if (!(str = (char *)ft_strnew(count + neg)))
 		return (NULL);
-	ft_fill_str(n, str, size - 1);
-	str[size] = 0;
+	nb = n;
+	nb = (nb < 0) ? -nb : nb;
+	if (neg)
+		str[0] = '-';
+	while (count > 0)
+	{
+		str[count + neg - 1] = (nb % 10) + '0';
+		nb /= 10;
+		count--;
+	}
 	return (str);
 }

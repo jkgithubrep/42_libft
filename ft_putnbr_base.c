@@ -6,21 +6,11 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 13:15:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/18 15:25:39 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:38:22 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_base_size(char *base)
-{
-	int	i;
-
-	i = 0;
-	while (*base++)
-		i++;
-	return (i);
-}
 
 void	ft_putnbr_base(int nbr, char *base)
 {
@@ -28,7 +18,7 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		base_s;
 
 	n = nbr;
-	base_s = ft_base_size(base);
+	base_s = ft_strlen(base);
 	if (n < 0)
 	{
 		ft_putchar('-');

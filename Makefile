@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/27 21:42:35 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/28 15:07:33 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,15 @@ SRC_NAME = 	ft_atoi.c \
 			ft_isdigit.c \
 			ft_islower.c \
 			ft_isprint.c \
+			ft_isspace.c \
 			ft_isupper.c \
 			ft_itoa.c \
+			ft_lstadd.c \
+			ft_lstdel.c \
+			ft_lstdelone.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
+			ft_lstnew.c \
 			ft_memalloc.c \
 			ft_memccpy.c \
 			ft_memchr.c \
@@ -46,7 +53,6 @@ SRC_NAME = 	ft_atoi.c \
 			ft_memmove.c \
 			ft_memset.c \
 			ft_print_bytes.c \
-			ft_print_char.c \
 			ft_putchar.c \
 			ft_putchar_fd.c \
 			ft_putendl.c \
@@ -84,13 +90,8 @@ SRC_NAME = 	ft_atoi.c \
 			ft_strtrim.c \
 			ft_tolower.c \
 			ft_toupper.c \
-			ft_lstnew.c \
-			ft_lstdelone.c \
-			ft_lstdel.c \
-			ft_lstadd.c \
-			ft_lstiter.c \
-			ft_lstmap.c \
-			print_bytes.c #BEWARE, only for tests!
+			ft_strdup_c.c \
+			ft_count_words_c.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

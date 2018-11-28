@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:51:08 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 15:30:39 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:54:17 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (s2 == NULL)
 		return (NULL);
 	i = 0;
-	while (s[i])
+	while (s[i] && f)
 	{
 		s2[i] = f(s[i]);
 		i++;
