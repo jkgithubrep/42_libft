@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/28 15:07:33 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/28 15:59:14 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ OBJ_PATH = obj
 
 SRC_NAME = 	ft_atoi.c \
 			ft_bzero.c \
-			ft_init_string.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
