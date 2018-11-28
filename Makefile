@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/28 15:59:14 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/28 18:26:24 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_NAME = 	ft_atoi.c \
 			ft_isspace.c \
 			ft_isupper.c \
 			ft_itoa.c \
+			ft_itoa_base.c \
 			ft_lstadd.c \
 			ft_lstdel.c \
 			ft_lstdelone.c \
@@ -51,7 +52,10 @@ SRC_NAME = 	ft_atoi.c \
 			ft_memdel.c \
 			ft_memmove.c \
 			ft_memset.c \
+			ft_isgraph.c \
+			ft_isxdigit.c \
 			ft_print_bytes.c \
+			ft_iscntrl.c \
 			ft_putchar.c \
 			ft_putchar_fd.c \
 			ft_putendl.c \
@@ -64,6 +68,7 @@ SRC_NAME = 	ft_atoi.c \
 			ft_strcat.c \
 			ft_strchr.c \
 			ft_strclr.c \
+			ft_isblank.c \
 			ft_strcmp.c \
 			ft_strcpy.c \
 			ft_strdel.c \

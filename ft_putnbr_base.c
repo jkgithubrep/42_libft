@@ -6,28 +6,28 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 13:15:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 14:38:22 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 18:41:31 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(int nbr, int	base_size)
 {
 	long	n;
-	int		base_s;
+	char	*base;
 
 	n = nbr;
-	base_s = ft_strlen(base);
+	base = "0123456789ABCDEF";
 	if (n < 0)
 	{
 		ft_putchar('-');
 		n *= -1;
 	}
-	if (n >= base_s)
+	if (n >= base_size)
 	{
-		ft_putnbr_base(n / base_s, base);
-		ft_putchar(base[n % base_s]);
+		ft_putnbr_base(n / base_size, base_size);
+		ft_putchar(base[n % base_size]);
 	}
 	else
 		ft_putchar(base[n]);

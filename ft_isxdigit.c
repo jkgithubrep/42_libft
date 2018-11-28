@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
+/*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 18:41:15 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/28 18:00:50 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/28 18:03:22 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_bytes(void *ptr, size_t size)
+int		ft_isxdigit(int c)
 {
-	unsigned char	*p;
-	size_t			i;
-
-	i = 0;
-	p = (unsigned char *)ptr;
-	while (i < size)
-	{
-		ft_putnbr_base(p[i], 16);
-		ft_putchar(' ');
-		i++;
-	}
+	return (ft_isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'));
 }

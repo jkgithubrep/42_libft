@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bytes.c                                   :+:      :+:    :+:   */
+/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 18:41:15 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/28 17:52:04 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/28 17:55:59 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_print_bytes(void *ptr, size_t size)
+int		ft_iscntrl(int c)
 {
-	unsigned char	*p;
-	size_t			i;
-
-	i = 0;
-	p = (unsigned char *)ptr;
-	while (i < size)
-	{
-		ft_putnbr_base(p[i], 16);
-		ft_putchar(' ');
-		i++;
-	}
+	return ((c >= 0 && c <= 31) || c == 127);
 }

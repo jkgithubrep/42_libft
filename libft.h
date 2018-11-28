@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 15:13:23 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/28 18:26:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_list
 
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
+char				*ft_itoa_base(int n, int base_size);
 char				*ft_strcat(char *s, const char *append);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strcpy(char *dst, const char *src);
@@ -48,6 +49,10 @@ int					ft_islower(int c);
 int					ft_isprint(int c);
 int					ft_isspace(int c);
 int					ft_isupper(int c);
+int					ft_isblank(int c);
+int					ft_iscntrl(int c);
+int					ft_isgraph(int c);
+int					ft_isxdigit(int c);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strequ(char const *s1, char const *s2);
@@ -77,7 +82,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);
-void				ft_putnbr_base(int nbr, char *base);
+void				ft_putnbr_base(int nbr, int base_size);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
