@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 18:28:38 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 18:45:09 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/29 09:54:14 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int		main(void)
 	ft_putnbr_base(2147483647, 10);
 	ft_putchar(' ');
 	ft_putnbr_base(2147483647, 16);
+	ft_putchar('\n');
+	ft_putnbr_base(2147483647, 0);
+	ft_putchar(' ');
+	ft_putnbr_base(2147483647, 1);
+	ft_putchar(' ');
+	ft_putnbr_base(2147483647, 17);
 	ft_putchar('\n');
 	return (0);
 }
