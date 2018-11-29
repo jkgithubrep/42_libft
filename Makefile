@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/29 09:06:03 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/29 10:04:23 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,4 +148,4 @@ fclean: clean
 
 re: fclean all
 
-include $(wildcard $(DEPS)) 
+include $(DEPS)
