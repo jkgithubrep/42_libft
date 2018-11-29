@@ -6,11 +6,12 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 14:17:17 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/21 14:50:14 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/29 10:53:11 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "tests.h"
 
 char	*ft_select_fct(char *fct, const char *haystack, const char *needle, 
 			size_t len)

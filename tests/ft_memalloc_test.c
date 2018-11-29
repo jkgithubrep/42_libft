@@ -6,11 +6,12 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:42:37 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/22 15:53:01 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/29 10:48:44 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "tests.h"
 
 int		main(int ac, char **av)
 {

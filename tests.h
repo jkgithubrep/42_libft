@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace_test.c                                  :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 09:50:38 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/29 10:45:05 by jkettani         ###   ########.fr       */
+/*   Created: 2018/11/29 10:38:51 by jkettani          #+#    #+#             */
+/*   Updated: 2018/11/29 10:54:49 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef TESTS_H
+# define TESTS_H
+#include  <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 
-int		main(void)
-{
-	printf("%d", ft_isspace(' '));
-	printf("%d", ft_isspace('\t'));
-	printf("%d", ft_isspace('\n'));
-	printf("%d", ft_isspace('\f'));
-	printf("%d", ft_isspace('\r'));
-	printf("%d", ft_isspace('\v'));
-	printf("%d", ft_isspace('a'));
-	printf("%d", ft_isspace('9'));
-	printf("%d", ft_isspace('\\'));
-	return (0);
-}
+void	print_bytes(const void *s, size_t len);
+
+#endif

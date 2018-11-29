@@ -6,11 +6,12 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:31:30 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/27 10:11:43 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/29 10:50:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "tests.h"
 
 void	*ft_select_fct(char *fct, const char *s, int c, size_t n)
 {

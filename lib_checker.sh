@@ -21,6 +21,7 @@ INT_MAX=2147483647
 
 # Other variables
 OUTDIR=tests_output
+ADD_FCT_COMP="print_bytes.c ft_init_string.c"
 
 # Display usage
 if [ $# -eq 0 ]; then
@@ -55,7 +56,7 @@ printf "\n"
 compile() {
 printf "#########################\n"
 printf "Compiling $1_test.c...\n"
-${COMPILE} tests/"$1"_test.c -o out/"$1"_test ${LFLAGS} # lib flags after for ubuntu
+${COMPILE} tests/"$1"_test.c ${ADD_FCT_COMP} -o out/"$1"_test ${LFLAGS} # lib flags after for ubuntu
 if [ $? -eq 0 ]; then
 	printf "${GREEN}$1_test.c compiled without errors${NC}\n"
 	RETVAL=0
