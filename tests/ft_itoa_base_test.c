@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 18:58:33 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 19:03:47 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/11/29 09:33:38 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ int		main(void)
 		printf("%s\n", ft_itoa_base(2147483647, tab[i]));
 		i++;
 	}
+	printf("%s\n", ft_itoa_base(2147483647, 0));
+	printf("%s\n", ft_itoa_base(2147483647, 1));
+	printf("%s\n", ft_itoa_base(2147483647, 17));
 	return (0);
 }
