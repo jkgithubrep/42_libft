@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/28 18:26:24 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/29 09:06:03 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,21 @@ POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
 
 OBJ_PATH = obj
 
-SRC_NAME = 	ft_atoi.c \
+SRC_NAME =	ft_atoi.c \
 			ft_bzero.c \
+			ft_count_words_c.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
+			ft_isblank.c \
+			ft_iscntrl.c \
 			ft_isdigit.c \
+			ft_isgraph.c \
 			ft_islower.c \
 			ft_isprint.c \
 			ft_isspace.c \
 			ft_isupper.c \
+			ft_isxdigit.c \
 			ft_itoa.c \
 			ft_itoa_base.c \
 			ft_lstadd.c \
@@ -52,10 +57,7 @@ SRC_NAME = 	ft_atoi.c \
 			ft_memdel.c \
 			ft_memmove.c \
 			ft_memset.c \
-			ft_isgraph.c \
-			ft_isxdigit.c \
 			ft_print_bytes.c \
-			ft_iscntrl.c \
 			ft_putchar.c \
 			ft_putchar_fd.c \
 			ft_putendl.c \
@@ -68,11 +70,11 @@ SRC_NAME = 	ft_atoi.c \
 			ft_strcat.c \
 			ft_strchr.c \
 			ft_strclr.c \
-			ft_isblank.c \
 			ft_strcmp.c \
 			ft_strcpy.c \
 			ft_strdel.c \
 			ft_strdup.c \
+			ft_strdup_c.c \
 			ft_strequ.c \
 			ft_striter.c \
 			ft_striteri.c \
@@ -93,9 +95,7 @@ SRC_NAME = 	ft_atoi.c \
 			ft_strsub.c \
 			ft_strtrim.c \
 			ft_tolower.c \
-			ft_toupper.c \
-			ft_strdup_c.c \
-			ft_count_words_c.c
+			ft_toupper.c 
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
