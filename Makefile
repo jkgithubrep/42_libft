@@ -6,130 +6,55 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/11/29 10:04:23 by jkettani         ###   ########.fr        #
+#    Updated: 2018/11/30 14:19:05 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, clean, fclean, re
 
-NAME = libft.a
-
-SRC_PATH = .
-
-INCLUDE_PATH = .
-
-DEP_PATH = .deps
-
-DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/$*.Td
-
-POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
-
-OBJ_PATH = obj
-
-SRC_NAME =	ft_atoi.c \
-			ft_bzero.c \
-			ft_count_words_c.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isascii.c \
-			ft_isblank.c \
-			ft_iscntrl.c \
-			ft_isdigit.c \
-			ft_isgraph.c \
-			ft_islower.c \
-			ft_isprint.c \
-			ft_isspace.c \
-			ft_isupper.c \
-			ft_isxdigit.c \
-			ft_itoa.c \
-			ft_itoa_base.c \
-			ft_lstadd.c \
-			ft_lstdel.c \
-			ft_lstdelone.c \
-			ft_lstiter.c \
-			ft_lstmap.c \
-			ft_lstnew.c \
-			ft_memalloc.c \
-			ft_memccpy.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_memcpy.c \
-			ft_memdel.c \
-			ft_memmove.c \
-			ft_memset.c \
-			ft_print_bytes.c \
-			ft_putchar.c \
-			ft_putchar_fd.c \
-			ft_putendl.c \
-			ft_putendl_fd.c \
-			ft_putnbr.c \
-			ft_putnbr_base.c \
-			ft_putnbr_fd.c \
-			ft_putstr.c \
-			ft_putstr_fd.c \
-			ft_strcat.c \
-			ft_strchr.c \
-			ft_strclr.c \
-			ft_strcmp.c \
-			ft_strcpy.c \
-			ft_strdel.c \
-			ft_strdup.c \
-			ft_strdup_c.c \
-			ft_strequ.c \
-			ft_striter.c \
-			ft_striteri.c \
-			ft_strjoin.c \
-			ft_strlcat.c \
-			ft_strlen.c \
-			ft_strmap.c \
-			ft_strmapi.c \
-			ft_strncat.c \
-			ft_strncmp.c \
-			ft_strncpy.c \
-			ft_strnequ.c \
-			ft_strnew.c \
-			ft_strnstr.c \
-			ft_strrchr.c \
-			ft_strsplit.c \
-			ft_strstr.c \
-			ft_strsub.c \
-			ft_strtrim.c \
-			ft_tolower.c \
-			ft_toupper.c 
-
-SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
-
-OBJ = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
-
-DEPS = $(patsubst $(SRC_PATH)/%.c, $(DEP_PATH)/%.d, $(SRC))
-
-AR = ar
-
-ARFLAGS = -rc
-
-CC = gcc
-
-CFLAGS = -Werror -Wall -Wextra
-
+NAME := libft.a
+FT := ft_
+SRC_PATH := srcs
+INCLUDE_PATH := includes
+OBJ_PATH := obj
+DEP_PATH := .deps
+RM := rm -rf
+AR := ar
+ARFLAGS := -rcs
+CC := gcc
+CFLAGS := -Werror -Wall -Wextra
 CPPFLAGS = -I$(INCLUDE_PATH)
-
 COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/$*.Td
+POSTCOMPILE = @mv -f $(DEP_PATH)/$*.Td $(DEP_PATH)/$*.d && touch $@
+SRC_NAME :=	atoi bzero count_words_c isalnum isalpha isascii \
+			isblank iscntrl isdigit isgraph islower isprint \
+			isspace isupper isxdigit itoa itoa_base lstadd \
+			lstdel lstdelone lstiter lstmap lstnew memalloc \
+			memccpy memchr memcmp memcpy memdel memmove \
+			memset print_bytes putchar putchar_fd putendl putendl_fd \
+			putnbr putnbr_base putnbr_fd putstr putstr_fd strcat \
+			strchr strclr strcmp strcpy strdel strdup \
+			strdup_c strequ striter striteri strjoin strlcat \
+			strlen strmap strmapi strncat strncmp strncpy \
+			strnequ strnew strnstr strrchr strsplit strstr \
+			strsub strtrim tolower toupper 
+SRC = $(addprefix $(SRC_PATH)/$(FT),$(addsuffix .c, $(SRC_NAME)))
+OBJ = $(addprefix $(OBJ_PATH)/$(FT),$(addsuffix .o, $(SRC_NAME)))
+DEP = $(addprefix $(DEP_PATH)/$(FT),$(addsuffix .d, $(SRC_NAME)))
 
-RM = rm -f
-
+.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $?
-	ranlib $@
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(DEP_PATH)/%.d | $(OBJ_PATH) $(DEP_PATH)
+$(OBJ): | $(OBJ_PATH) $(DEP_PATH)
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(DEP_PATH)/%.d
 	$(COMPILE.c) $< -o $@ 
 	$(POSTCOMPILE)
 
 $(DEP_PATH)/%.d: ;
-
-.PRECIOUS: $(DEP_PATH)/%.d
 
 $(OBJ_PATH):
 	mkdir $@
@@ -137,15 +62,18 @@ $(OBJ_PATH):
 $(DEP_PATH):
 	mkdir $@
 
+.PHONY: clean
 clean:
-	$(RM) $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	$(RM) $(DEPS)
-	@rmdir $(DEP_PATH) 2> /dev/null || true
+	$(RM) $(OBJ_PATH)
+	$(RM) $(DEP_PATH)
 
+.PHONY: fclean
 fclean: clean
 	$(RM) $(NAME)
 
+.PHONY: re
 re: fclean all
 
-include $(DEPS)
+.PRECIOUS: $(DEP_PATH)/%.d
+
+include $(wildcard $(DEP))

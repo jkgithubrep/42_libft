@@ -4,21 +4,21 @@
 
 - [x] memset
 - [x] bzero
-- [ ] memcpy
-- [ ] memccpy
-- [ ] memmove
-- [ ] memchr
-- [ ] memcmp
-- [ ] strlen
-- [ ] strdup
-- [ ] strcpy
-- [ ] strncpy
-- [ ] strcat
-- [ ] strncat
-- [ ] strlcat
-- [ ] strchr
-- [ ] strrchr
-- [ ] strstr
+- [x] memcpy
+- [x] memccpy
+- [x] memmove
+- [x] memchr
+- [x] memcmp
+- [x] strlen
+- [x] strdup
+- [x] strcpy
+- [x] strncpy
+- [x] strcat
+- [x] strncat
+- [x] strlcat
+- [x] strchr
+- [x] strrchr
+- [x] strstr
 - [x] strnstr
 - [x] strcmp
 - [x] strncmp
@@ -33,22 +33,22 @@
 
 ## Part 2 - Fonctions supplémentaires
 
-- [ ] ft\_memalloc
-- [ ] ft\_memdel
-- [ ] ft\_strnew
-- [ ] ft\_strdel
-- [ ] ft\_strclr
-- [ ] ft\_striter
-- [ ] ft\_striteri
-- [ ] ft\_strmap
-- [ ] ft\_strmapi
-- [ ] ft\_strequ
-- [ ] ft\_strnequ
-- [ ] ft\_strsub
-- [ ] ft\_stjoin
-- [ ] ft\_strtrim
-- [ ] ft\_strsplit
-- [ ] ft\_itoa
+- [x] ft\_memalloc
+- [x] ft\_memdel
+- [x] ft\_strnew
+- [x] ft\_strdel
+- [x] ft\_strclr
+- [x] ft\_striter
+- [x] ft\_striteri
+- [x] ft\_strmap
+- [x] ft\_strmapi
+- [x] ft\_strequ
+- [x] ft\_strnequ
+- [x] ft\_strsub
+- [x] ft\_stjoin
+- [x] ft\_strtrim
+- [x] ft\_strsplit
+- [x] ft\_itoa
 - [x] ft\_putchar
 - [x] ft\_putstr
 - [x] ft\_putendl
@@ -60,15 +60,13 @@
 
 ## Partie bonus
 
-- [ ] ft\_lstnew
-- [ ] ft\_lstdelone
-- [ ] ft\_lstdel
-- [ ] ft\_lstadd
-- [ ] ft\_lstiter
-- [ ] ft\_lstmap
+- [x] ft\_lstnew
+- [x] ft\_lstdelone
+- [x] ft\_lstdel
+- [x] ft\_lstadd
+- [x] ft\_lstiter
+- [x] ft\_lstmap
 
 ## Other functions
-- [x] ft\_init\_string
-- [x] ft\_print\_bytes
 - [x] ft\_print\_bytes
 
