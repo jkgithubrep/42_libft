@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 11:01:26 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 18:41:15 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/12/06 11:38:21 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_print_bytes(void *ptr, size_t size)
 	while (i < size)
 	{
 		ft_putnbr_base(p[i], 16);
-		ft_putchar(' ');
+		if (i < size - 1)
+			ft_putchar(' ');
 		i++;
 	}
 }
