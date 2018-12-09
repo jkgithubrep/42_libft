@@ -6,28 +6,28 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 13:55:52 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 15:00:44 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:12:51 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t	ft_count_words_c(char const *s, char c)
+size_t	ft_count_words_c(char const *str, char c)
 {
 	size_t	nb;
 
 	nb = 0;
-	if (!s)
+	if (!str)
 		return (0);
-	while (*s)
+	while (*str)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		while (*str == c)
+			str++;
+		if (*str)
 		{
 			nb++;
-			while (*s && *s != c)
-				s++;
+			while (*str && *str != c)
+				str++;
 		}
 	}
 	return (nb);
