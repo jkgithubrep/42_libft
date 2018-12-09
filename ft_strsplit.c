@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:38:34 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/09 15:30:55 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/12/09 16:55:35 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		**clean_tb(char **tb, int last)
 
 	i = 0;
 	while (i < last)
-		free(tb[i]);
+		free(tb[i++]);
 	free(tb);
 	return (NULL);
 }
