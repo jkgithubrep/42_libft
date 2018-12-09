@@ -1,7 +1,4 @@
 obj
 .deps
 libft.a
-tests_output
-out
-*.swp
-libft-unit-test
+*.sw*
