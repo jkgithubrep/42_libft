@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/09 17:07:25 by jkettani         ###   ########.fr       */
+/*   Updated: 2018/12/23 01:52:44 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_memdel(void **ap);
+int					ft_power(int nb, int power);
 void				ft_print_bytes(void *ptr, size_t size);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
