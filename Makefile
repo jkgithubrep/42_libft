@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/23 01:49:12 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/23 02:57:27 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset
 SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
 			    ft_putendl_fd ft_putnbr ft_putnbr_base ft_putnbr_fd \
-			    ft_putstr ft_putstr_fd
+			    ft_putstr ft_putstr_fd ft_get_next_line
 SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strcpy ft_strdel ft_strdup ft_strdup_c ft_strequ \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
