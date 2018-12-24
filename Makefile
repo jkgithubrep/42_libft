@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/23 02:57:27 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/24 09:49:12 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME =          libft.a
 SRC_PATH =      srcs
 INCLUDE_PATH =  includes
 OBJ_PATH =      obj
-RM =            rm -rf
+RM =            rm -f
+RMDIR =         rmdir -p
 AR =            ar
 ARFLAGS =       -rcs
 CC =            gcc
@@ -52,6 +53,7 @@ SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 SRC =           $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(SRC_NAME)))
 OBJ =           $(patsubst %.c, $(OBJ_PATH)/%.o, $(SRC))
 DEP =           $(patsubst %.c, $(OBJ_PATH)/%.d, $(SRC))
+OBJ_DIRS =      $(shell find $(OBJ_PATH) -type d -print)
 
 .PHONY: all
 all: $(NAME)
@@ -70,7 +72,10 @@ $(OBJ_PATH)/%:
 
 .PHONY: clean
 clean:
-	$(RM) $(OBJ_PATH)
+	echo $(OBJ_DIRS)
+	$(RM) $(OBJ)
+	$(RM) $(DEP)
+	echo $(OBJ_DIRS) | xargs $(RMDIR) 2> /dev/null || true
 
 .PHONY: fclean
 fclean: clean
