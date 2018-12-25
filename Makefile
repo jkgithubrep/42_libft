@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 16:31:21 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 16:35:19 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ $(NAME): $(OBJ)
 
 $(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
 	$(ECHO) "Compiling $(notdir $<)..."
-	$(QUIET) $(COMPILE.c) $< -o $@ 
+	$(QUIET) $(COMPILE.c) $< -o $@
 	$(QUIET) $(POSTCOMPILE)
 
 $(OBJ_PATH)/%.d: ;
