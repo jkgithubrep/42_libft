@@ -6,9 +6,17 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 15:00:08 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 16:31:21 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# ----- VARIABLES -----
+
+QUIET := @
+ECHO := @echo
+ifneq ($(QUIET),@)
+ECHO := @true
+endif
 
 SHELL =         /bin/sh
 MAKEFLAGS       += --warn-undefined-variables
@@ -54,39 +62,51 @@ SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 SRC =           $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(SRC_NAME)))
 OBJ =           $(patsubst %.c, $(OBJ_PATH)/%.o, $(SRC))
 DEP =           $(patsubst %.c, $(OBJ_PATH)/%.d, $(SRC))
-OBJ_DIRS =      $(shell find $(OBJ_PATH) -type d -print)
+OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print)
 
 .SUFFIXES:
 .SUFFIXES: .c .o .h
+
+# ----- RULES -----
 
 .PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $?
+	$(ECHO) "Building archive file $(NAME)..."
+	$(QUIET) $(AR) $(ARFLAGS) $@ $?
 
-$(OBJ): $(OBJ_PATH)/%.o: %.c
-	$(COMPILE.c) $< -o $@ 
-	$(POSTCOMPILE)
+.SECONDEXPANSION:
+
+$(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
+	$(ECHO) "Compiling $(notdir $<)..."
+	$(QUIET) $(COMPILE.c) $< -o $@ 
+	$(QUIET) $(POSTCOMPILE)
 
 $(OBJ_PATH)/%.d: ;
 
-$(OBJ_PATH)%/:
-	mkdir -p $@
+.PRECIOUS: $(OBJ_PATH)%/. $(OBJ_PATH)/. 
+$(OBJ_PATH)/. $(OBJ_PATH)%/.: 
+	$(ECHO) "Making directory $@..."
+	$(QUIET) mkdir -p $@
 
 .PHONY: clean
 clean:
-	$(RM) $(OBJ)
-	$(RM) $(DEP)
-	echo $(OBJ_DIRS) | xargs $(RMDIR) 2> /dev/null || true
+	$(ECHO) "Cleaning object files..."
+	$(QUIET) $(RM) $(OBJ)
+	$(ECHO) "Cleaning dependency files..."
+	$(QUIET) $(RM) $(DEP)
+	$(ECHO) "Cleaning obj tree..."
+	$(QUIET) echo $(OBJ_TREE) | xargs $(RMDIR) 2> /dev/null || true
 
 .PHONY: fclean
 fclean: clean
-	$(RM) $(NAME)
+	$(ECHO) "Cleaning $(NAME)..."
+	$(QUIET) $(RM) $(NAME)
 
 .PHONY: re
 re: fclean all
 
-$(foreach OBJECT,$(OBJ),$(eval $(OBJECT): | $(dir $(OBJECT))))
+# ----- INCLUDES -----
 
-include $(wildcard $(DEP))
+-include $(DEP)
