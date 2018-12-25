@@ -6,11 +6,16 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 16:35:19 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 17:15:20 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- VARIABLES -----
+
+NO_COLOR=\x1b[0m
+OK_COLOR=\x1b[32;01m
+ERROR_COLOR=\x1b[31;01m
+WARN_COLOR=\x1b[33;01m
 
 QUIET := @
 ECHO := @echo
@@ -62,7 +67,7 @@ SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 SRC =           $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(SRC_NAME)))
 OBJ =           $(patsubst %.c, $(OBJ_PATH)/%.o, $(SRC))
 DEP =           $(patsubst %.c, $(OBJ_PATH)/%.d, $(SRC))
-OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print)
+OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print 2> /dev/null)
 
 .SUFFIXES:
 .SUFFIXES: .c .o .h
@@ -98,6 +103,9 @@ clean:
 	$(QUIET) $(RM) $(DEP)
 	$(ECHO) "Cleaning obj tree..."
 	$(QUIET) echo $(OBJ_TREE) | xargs $(RMDIR) 2> /dev/null || true
+	@if [ -d $(OBJ_PATH) ]; \
+		then echo "$(ERROR_COLOR)Could not clean obj directory$(NO_COLOR)"; \
+		else echo "$(OK_COLOR)Obj directory succesfully cleaned$(NO_COLOR)"; fi
 
 .PHONY: fclean
 fclean: clean
