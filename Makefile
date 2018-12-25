@@ -6,11 +6,12 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/24 09:49:12 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 15:00:08 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
+SHELL =         /bin/sh
+MAKEFLAGS       += --warn-undefined-variables
 NAME =          libft.a
 SRC_PATH =      srcs
 INCLUDE_PATH =  includes
@@ -55,6 +56,9 @@ OBJ =           $(patsubst %.c, $(OBJ_PATH)/%.o, $(SRC))
 DEP =           $(patsubst %.c, $(OBJ_PATH)/%.d, $(SRC))
 OBJ_DIRS =      $(shell find $(OBJ_PATH) -type d -print)
 
+.SUFFIXES:
+.SUFFIXES: .c .o .h
+
 .PHONY: all
 all: $(NAME)
 
@@ -67,12 +71,11 @@ $(OBJ): $(OBJ_PATH)/%.o: %.c
 
 $(OBJ_PATH)/%.d: ;
 
-$(OBJ_PATH)/%:
+$(OBJ_PATH)%/:
 	mkdir -p $@
 
 .PHONY: clean
 clean:
-	echo $(OBJ_DIRS)
 	$(RM) $(OBJ)
 	$(RM) $(DEP)
 	echo $(OBJ_DIRS) | xargs $(RMDIR) 2> /dev/null || true
