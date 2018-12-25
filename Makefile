@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 17:15:20 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 23:28:00 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ ARFLAGS =       -rcs
 CC =            gcc
 CFLAGS =        -Werror -Wall -Wextra
 CPPFLAGS =      -I$(INCLUDE_PATH)
-COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
 DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.Td
+COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
 POSTCOMPILE =   @mv -f $(OBJ_PATH)/$*.Td $(OBJ_PATH)/$*.d && touch $@
 SRC_CHAR =      ft_isalnum ft_isalpha ft_isascii ft_isblank ft_iscntrl \
 			    ft_isdigit ft_isgraph ft_islower ft_isprint ft_isspace \
@@ -104,8 +104,8 @@ clean:
 	$(ECHO) "Cleaning obj tree..."
 	$(QUIET) echo $(OBJ_TREE) | xargs $(RMDIR) 2> /dev/null || true
 	@if [ -d $(OBJ_PATH) ]; \
-		then echo "$(ERROR_COLOR)Could not clean obj directory$(NO_COLOR)"; \
-		else echo "$(OK_COLOR)Obj directory succesfully cleaned$(NO_COLOR)"; fi
+		then echo "$(ERROR_COLOR)Could not clean obj directory.$(NO_COLOR)"; \
+		else echo "$(OK_COLOR)Obj directory succesfully cleaned.$(NO_COLOR)"; fi
 
 .PHONY: fclean
 fclean: clean
