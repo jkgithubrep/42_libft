@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 23:31:46 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/25 23:49:28 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,8 @@ SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix print/, $(SRC_PRINT)) \
 				$(addprefix str/, $(SRC_STR))
 SRC =           $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(SRC_NAME)))
-OBJ =           $(patsubst %.c, $(OBJ_PATH)/%.o, $(SRC))
-DEP =           $(patsubst %.c, $(OBJ_PATH)/%.d, $(SRC))
+OBJ =           $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
+DEP =           $(addprefix $(OBJ_PATH)/, $(SRC:.c=.d))
 OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print 2> /dev/null)
 
 .SUFFIXES:
