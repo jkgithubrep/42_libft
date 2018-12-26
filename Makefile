@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/26 08:23:57 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/26 08:26:26 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ clean:
 	$(QUIET) $(RM) $(DEP)
 	$(ECHO) "Cleaning obj tree..."
 	$(QUIET) echo $(OBJ_TREE) | xargs $(RMDIR) 2> /dev/null || true
-	@if [ -d $(OBJ_PATH) ];
+	@if [ -d $(OBJ_PATH) ]; \
 		then echo "$(ERR_COLOR)-> Could not clean obj directory.$(NC)"; \
 		else echo "$(OK_COLOR)-> Obj directory succesfully cleaned.$(NC)"; fi
 
