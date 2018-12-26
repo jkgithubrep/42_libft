@@ -6,25 +6,25 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/25 23:49:28 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/26 08:23:57 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- VARIABLES -----
 
-NO_COLOR=\x1b[0m
-OK_COLOR=\x1b[32;01m
-ERROR_COLOR=\x1b[31;01m
-WARN_COLOR=\x1b[33;01m
+NC =      \x1b[0m
+OK_COLOR =      \x1b[32;01m
+ERR_COLOR =   \x1b[31;01m
+WARN_COLOR =    \x1b[33;01m
 
-QUIET := @
-ECHO := @echo
+QUIET :=        @
+ECHO :=         @echo
 ifneq ($(QUIET),@)
-ECHO := @true
+ECHO :=         @true
 endif
 
 SHELL =         /bin/sh
-MAKEFLAGS       += --warn-undefined-variables
+MAKEFLAGS +=    --warn-undefined-variables
 NAME =          libft.a
 SRC_PATH =      srcs
 INCLUDE_PATH =  includes
@@ -77,9 +77,12 @@ OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print 2> /dev/null)
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(ECHO) "Building archive file $(NAME)..."
-	$(QUIET) $(AR) $(ARFLAGS) $@ $?
+.PRECIOUS: $(OBJ_PATH)%/. $(OBJ_PATH)/. 
+$(OBJ_PATH)/. $(OBJ_PATH)%/.: 
+	$(ECHO) "Making directory $@..."
+	$(QUIET) mkdir -p $@
+
+$(OBJ_PATH)/%.d: ;
 
 .SECONDEXPANSION:
 
@@ -88,12 +91,9 @@ $(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
 	$(QUIET) $(COMPILE.c) $< -o $@
 	$(QUIET) $(POSTCOMPILE)
 
-$(OBJ_PATH)/%.d: ;
-
-.PRECIOUS: $(OBJ_PATH)%/. $(OBJ_PATH)/. 
-$(OBJ_PATH)/. $(OBJ_PATH)%/.: 
-	$(ECHO) "Making directory $@..."
-	$(QUIET) mkdir -p $@
+$(NAME): $(OBJ)
+	$(ECHO) "Building archive file $(NAME)..."
+	$(QUIET) $(AR) $(ARFLAGS) $@ $?
 
 .PHONY: clean
 clean:
@@ -103,14 +103,17 @@ clean:
 	$(QUIET) $(RM) $(DEP)
 	$(ECHO) "Cleaning obj tree..."
 	$(QUIET) echo $(OBJ_TREE) | xargs $(RMDIR) 2> /dev/null || true
-	@if [ -d $(OBJ_PATH) ]; \
-		then echo "$(ERROR_COLOR)Could not clean obj directory.$(NO_COLOR)"; \
-		else echo "$(OK_COLOR)Obj directory succesfully cleaned.$(NO_COLOR)"; fi
+	@if [ -d $(OBJ_PATH) ];
+		then echo "$(ERR_COLOR)-> Could not clean obj directory.$(NC)"; \
+		else echo "$(OK_COLOR)-> Obj directory succesfully cleaned.$(NC)"; fi
 
 .PHONY: fclean
 fclean: clean
 	$(ECHO) "Cleaning $(NAME)..."
 	$(QUIET) $(RM) $(NAME)
+	@if [ -f $(NAME) ]; \
+		then echo "$(ERR_COLOR)-> Could not clean $(NAME).$(NC)"; \
+		else echo "$(OK_COLOR)-> $(NAME) succesfully cleaned.$(NC)"; fi
 
 .PHONY: re
 re: fclean all
