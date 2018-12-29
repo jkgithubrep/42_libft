@@ -6,29 +6,27 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/26 08:26:26 by jkettani         ###   ########.fr        #
+#    Updated: 2018/12/29 12:08:50 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- VARIABLES -----
 
-NC =      \x1b[0m
+NC =            \x1b[0m
 OK_COLOR =      \x1b[32;01m
-ERR_COLOR =   \x1b[31;01m
-WARN_COLOR =    \x1b[33;01m
-
+ERR_COLOR =     \x1b[31;01m
+WARN_COLOR =    \x1b[34;01m
 QUIET :=        @
 ECHO :=         @echo
 ifneq ($(QUIET),@)
 ECHO :=         @true
 endif
-
 SHELL =         /bin/sh
 MAKEFLAGS +=    --warn-undefined-variables
 NAME =          libft.a
 SRC_PATH =      srcs
 INCLUDE_PATH =  includes
-OBJ_PATH =      obj
+OBJ_PATH =      .obj
 RM =            rm -f
 RMDIR =         rmdir -p
 AR =            ar
@@ -79,7 +77,7 @@ all: $(NAME)
 
 .PRECIOUS: $(OBJ_PATH)%/. $(OBJ_PATH)/. 
 $(OBJ_PATH)/. $(OBJ_PATH)%/.: 
-	$(ECHO) "Making directory $@..."
+	$(ECHO) "Making directory $(WARN_COLOR)$@$(NC)..."
 	$(QUIET) mkdir -p $@
 
 $(OBJ_PATH)/%.d: ;
@@ -87,12 +85,12 @@ $(OBJ_PATH)/%.d: ;
 .SECONDEXPANSION:
 
 $(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
-	$(ECHO) "Compiling $(notdir $<)..."
+	$(ECHO) "Compiling $(WARN_COLOR)$<$(NC)..."
 	$(QUIET) $(COMPILE.c) $< -o $@
 	$(QUIET) $(POSTCOMPILE)
 
 $(NAME): $(OBJ)
-	$(ECHO) "Building archive file $(NAME)..."
+	$(ECHO) "Building archive file $(WARN_COLOR)$(NAME)$(NC)..."
 	$(QUIET) $(AR) $(ARFLAGS) $@ $?
 
 .PHONY: clean
