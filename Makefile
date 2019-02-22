@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2018/12/29 12:08:50 by jkettani         ###   ########.fr        #
+#    Updated: 2019/02/22 11:21:59 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
 		        ft_strmap ft_strmapi ft_strncat ft_strncmp ft_strncpy \
 		        ft_strnequ ft_strnew ft_strnstr ft_strrchr ft_strsplit \
-		        ft_strstr ft_strsub ft_strtrim
+		        ft_strstr ft_strsub ft_strtrim ft_is_in_str
 SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
 				$(addprefix list/, $(SRC_LIST)) \

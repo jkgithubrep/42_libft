@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/23 02:57:48 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/22 11:21:02 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_atoi(const char *str);
 int					ft_get_next_line(const int fd, char **line);
+int					ft_is_in_str(const char c, const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -55,6 +56,7 @@ int					ft_isspace(int c);
 int					ft_isupper(int c);
 int					ft_isxdigit(int c);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_power(int nb, int power);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t len);
@@ -78,7 +80,6 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_memdel(void **ap);
-int					ft_power(int nb, int power);
 void				ft_print_bytes(void *ptr, size_t size);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
