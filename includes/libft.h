@@ -6,13 +6,14 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/22 11:21:02 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/23 20:21:28 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdint.h>
 
 typedef struct		s_list
 {
@@ -94,5 +95,11 @@ void				ft_strclr(char *s);
 void				ft_strdel(char **as);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
+int					ft_digits_base(intmax_t n, int radix);
+int					ft_udigits_base(uintmax_t n, int radix);
+char				*ft_imaxtoa_base(intmax_t nb, int radix);
+char				*ft_uimaxtoa_base(uintmax_t nb, int radix);
+int					ft_issign(int c);
+int					ft_is_valid_base(const char *base);
 
 #endif

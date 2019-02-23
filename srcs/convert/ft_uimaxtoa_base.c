@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_in_str.c                                     :+:      :+:    :+:   */
+/*   ft_uimaxtoa_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 11:14:43 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 16:31:12 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/23 17:37:30 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/23 20:05:19 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/*
-** Check if char argument `c` is in string `str`. Terminating null character in
-** `str` is not taken into account.
-** Return value: returns zero if c is not found in the string  and non-zero
-**               if the character tests true.
-*/
-
-int				ft_is_in_str(const char c, const char *str)
+char		*ft_uimaxtoa_base(uintmax_t nb, int radix)
 {
-	char		*ptr;
+	int		digits;
+	char	*str;
+	char	*base;
 
-	ptr = ft_strchr(str, c);
-	return (!!ptr && *ptr);
+	if ((digits = ft_udigits_base(nb, radix)) < 0
+			|| !(str = (char *)ft_strnew(digits)))
+		return (NULL);
+	base = "0123456789ABCDEF";
+	while (digits > 0)
+	{
+		str[digits - 1] = base[nb % radix];
+		nb /= radix;
+		--digits;
+	}
+	return (str);
 }

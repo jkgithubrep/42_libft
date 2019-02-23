@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_in_str.c                                     :+:      :+:    :+:   */
+/*   ft_udigits_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 11:14:43 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 16:31:12 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/23 17:43:03 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/23 17:43:44 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Check if char argument `c` is in string `str`. Terminating null character in
-** `str` is not taken into account.
-** Return value: returns zero if c is not found in the string  and non-zero
-**               if the character tests true.
-*/
-
-int				ft_is_in_str(const char c, const char *str)
+int		ft_udigits_base(uintmax_t n, int radix)
 {
-	char		*ptr;
+	int			count;
 
-	ptr = ft_strchr(str, c);
-	return (!!ptr && *ptr);
+	if (radix < 1)
+		return (-1);
+	else if (radix == 1)
+		return (n);
+	else if (n == 0)
+		return (1);
+	else
+	{
+		count = 0;
+		while (n != 0)
+		{
+			count++;
+			n /= radix;
+		}
+	}
+	return (count);
 }

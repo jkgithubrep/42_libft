@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_in_str.c                                     :+:      :+:    :+:   */
+/*   ft_is_valid_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 11:14:43 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 16:31:12 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/23 20:09:13 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/23 20:23:10 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-/*
-** Check if char argument `c` is in string `str`. Terminating null character in
-** `str` is not taken into account.
-** Return value: returns zero if c is not found in the string  and non-zero
-**               if the character tests true.
-*/
-
-int				ft_is_in_str(const char c, const char *str)
+int			ft_is_valid_base(const char *base)
 {
-	char		*ptr;
+	int		i;
+	int		j;
+	char	c;
 
-	ptr = ft_strchr(str, c);
-	return (!!ptr && *ptr);
+	if (!base || !*base)
+		return (0);
+	i = 0;
+	while (base[i])
+	{
+		if (ft_issign(base[i]) || !ft_isprint(base[i]))
+			return (0);
+		j = i;
+		while (base[++j])
+			if (base[j] == base[i])
+				return (0);
+		i++;
+	}
+	return (1);
 }
