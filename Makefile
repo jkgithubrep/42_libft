@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/02/22 11:21:59 by jkettani         ###   ########.fr        #
+#    Updated: 2019/02/23 16:20:47 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ POSTCOMPILE =   @mv -f $(OBJ_PATH)/$*.Td $(OBJ_PATH)/$*.d && touch $@
 SRC_CHAR =      ft_isalnum ft_isalpha ft_isascii ft_isblank ft_iscntrl \
 			    ft_isdigit ft_isgraph ft_islower ft_isprint ft_isspace \
 			    ft_isupper ft_isxdigit ft_tolower ft_toupper
-SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base
+SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew
 SRC_MATH =      ft_power
