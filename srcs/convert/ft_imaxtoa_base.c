@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:42:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 20:29:10 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/24 10:14:57 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char		*ft_imaxtoa_base(intmax_t nb, const char *base)
 {
-	int		digits;
 	char	*str;
+	int		digits;
 	int		neg;
 	int		pos;
 	int		radix;

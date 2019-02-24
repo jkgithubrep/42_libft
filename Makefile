@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/02/23 20:15:41 by jkettani         ###   ########.fr        #
+#    Updated: 2019/02/24 19:06:13 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,11 @@ SRC_CHAR =      ft_isalnum ft_isalpha ft_isascii ft_isblank ft_iscntrl \
 			    ft_isdigit ft_isgraph ft_islower ft_isprint ft_isspace \
 			    ft_isupper ft_isxdigit ft_tolower ft_toupper ft_issign
 SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base \
-				ft_udigits_base ft_imaxtoa_base ft_uimaxtoa_base
+				ft_udigits_base ft_imaxtoa_base ft_uimaxtoa_base \
+				ft_is_valid_base
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew
-SRC_MATH =      ft_power
+SRC_MATH =      ft_power ft_min ft_max
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset
 SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
@@ -55,7 +56,8 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
 		        ft_strmap ft_strmapi ft_strncat ft_strncmp ft_strncpy \
 		        ft_strnequ ft_strnew ft_strnstr ft_strrchr ft_strsplit \
-		        ft_strstr ft_strsub ft_strtrim ft_is_in_str
+		        ft_strstr ft_strsub ft_strtrim ft_is_in_str \
+				ft_strappend ft_strprepend ft_strcnew
 SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
 				$(addprefix list/, $(SRC_LIST)) \

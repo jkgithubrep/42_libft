@@ -6,15 +6,16 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 20:09:13 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 20:23:10 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/24 10:01:44 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int			ft_is_valid_base(const char *base)
 {
 	int		i;
 	int		j;
-	char	c;
 
 	if (!base || !*base)
 		return (0);

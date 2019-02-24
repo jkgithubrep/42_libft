@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:25:27 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 14:58:08 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/24 20:32:41 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 	char	*s2;
 
-	s2 = (char *)malloc(sizeof(*s2) * (ft_strlen(s1) + 1));
+	s2 = ft_memalloc(sizeof(*s2) * (ft_strlen(s1) + 1));
 	if (s2 == NULL)
 		return (NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/23 20:21:28 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:10:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strncat(char *s, const char *append, size_t count);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strnew(size_t size);
+char				*ft_strcnew(size_t size, int c);
 char				*ft_strnstr(const char *s1, const char *s2, size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *s1, const char *s2);
@@ -97,9 +98,13 @@ void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 int					ft_digits_base(intmax_t n, int radix);
 int					ft_udigits_base(uintmax_t n, int radix);
-char				*ft_imaxtoa_base(intmax_t nb, int radix);
-char				*ft_uimaxtoa_base(uintmax_t nb, int radix);
+char				*ft_imaxtoa_base(intmax_t nb, const char *base);
+char				*ft_uimaxtoa_base(uintmax_t nb, const char *base);
 int					ft_issign(int c);
 int					ft_is_valid_base(const char *base);
+intmax_t			ft_max(intmax_t n1, intmax_t n2);
+intmax_t			ft_min(intmax_t n1, intmax_t n2);
+char				*ft_strappend(char **str, const char *append);
+char				*ft_strprepend(const char *prepend, char **str);
 
 #endif
