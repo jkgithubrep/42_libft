@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpad_left.c                                   :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 18:44:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/25 11:43:24 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/25 16:50:28 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/25 17:45:47 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strpad_left(char **str, int c, size_t len)
+char		*ft_strcut(char **str, size_t len)
 {
-	char	*prepend;
+	char	*tmp;
 
-	if (!str || !len)
+	if (!str || len > ft_strlen(*str))
 		return (NULL);
-	if (!(prepend = ft_strcnew(len, c)))
+	if (!(tmp = ft_strnew(len)))
 		return (NULL);
-	ft_strprepend(prepend, str);
-	ft_strdel(&prepend);
+	if (!ft_strncpy(tmp, *str, len))
+		return (NULL);
+	ft_strdel(str);
+	*str = tmp;
 	return (*str);
 }

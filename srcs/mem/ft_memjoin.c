@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpad_left.c                                   :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 18:44:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/25 11:43:24 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/26 11:12:57 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/27 17:48:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strpad_left(char **str, int c, size_t len)
+void	*ft_memjoin(const void *s1, size_t n1, const void *s2, size_t n2)
 {
-	char	*prepend;
+	unsigned char	*s3;
 
-	if (!str || !len)
+	if (!s1 || !s2)
 		return (NULL);
-	if (!(prepend = ft_strcnew(len, c)))
+	if (!(s3 = ft_memalloc(n1 + n2 + 1)))
 		return (NULL);
-	ft_strprepend(prepend, str);
-	ft_strdel(&prepend);
-	return (*str);
+	ft_memcpy(s3, s1, n1);
+	ft_memcat(s3, n1, s2, n2);
+	return (s3);
 }

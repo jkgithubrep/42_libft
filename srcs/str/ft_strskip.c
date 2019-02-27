@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpad_left.c                                   :+:      :+:    :+:   */
+/*   ft_strskip.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 18:44:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/25 11:43:24 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/25 15:34:17 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/25 16:49:07 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char		*ft_strpad_left(char **str, int c, size_t len)
+/*
+** Apply the f function to each character of the string until the return value
+** of f is zero, and returns a pointer to the character where it stopped.
+** Exemple: if f = ft_isdigit, all digits characters are skipped until a
+**          non-digit character is found.
+*/
+
+char		*ft_strskip(const char *str, int (*f)(int))
 {
-	char	*prepend;
-
-	if (!str || !len)
+	if (!str)
 		return (NULL);
-	if (!(prepend = ft_strcnew(len, c)))
-		return (NULL);
-	ft_strprepend(prepend, str);
-	ft_strdel(&prepend);
-	return (*str);
+	while (*str && (*f)(*str))
+		++str;
+	return ((char *)str);
 }

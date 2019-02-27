@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpad_left.c                                   :+:      :+:    :+:   */
+/*   ft_is_in_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 18:44:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/25 11:43:24 by jkettani         ###   ########.fr       */
+/*   Created: 2019/02/22 11:14:43 by jkettani          #+#    #+#             */
+/*   Updated: 2019/02/27 13:11:42 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strpad_left(char **str, int c, size_t len)
-{
-	char	*prepend;
+/*
+** Check if char argument `c` is in string `str`. Terminating null character in
+** `str` is not taken into account.
+** Return value: returns zero if c is not found in the string  and non-zero
+**               if the character tests true.
+*/
 
-	if (!str || !len)
-		return (NULL);
-	if (!(prepend = ft_strcnew(len, c)))
-		return (NULL);
-	ft_strprepend(prepend, str);
-	ft_strdel(&prepend);
-	return (*str);
+int				ft_instr(const char c, const char *str)
+{
+	char		*ptr;
+
+	ptr = ft_strchr(str, c);
+	return (!!ptr && *ptr);
 }

@@ -1,3 +1,4 @@
 .obj
 libft.a
 *.sw*
+*.out*

@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/02/24 19:10:29 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/02/27 13:14:20 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_atoi(const char *str);
 int					ft_get_next_line(const int fd, char **line);
-int					ft_is_in_str(const char c, const char *str);
+int					ft_instr(const char c, const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -106,5 +106,12 @@ intmax_t			ft_max(intmax_t n1, intmax_t n2);
 intmax_t			ft_min(intmax_t n1, intmax_t n2);
 char				*ft_strappend(char **str, const char *append);
 char				*ft_strprepend(const char *prepend, char **str);
+char				*ft_strpad_left(char **str, int c, size_t len);
+char				*ft_strpad_right(char **str, int c, size_t len);
+char				*ft_strskip(const char *str, int (*f)(int));
+char				*ft_strcut(char **str, size_t len);
+void				*ft_memcat(void *s1, size_t n1, const void *s2, size_t n2);
+void				*ft_memjoin(const void *s1, size_t n1, const void *s2,
+																	size_t n2);
 
 #endif

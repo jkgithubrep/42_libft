@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/02/24 19:06:13 by jkettani         ###   ########.fr        #
+#    Updated: 2019/02/27 13:14:38 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew
 SRC_MATH =      ft_power ft_min ft_max
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
-				ft_memccpy ft_memdel ft_memmove ft_memset
+				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
+				ft_memjoin
 SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
 			    ft_putendl_fd ft_putnbr ft_putnbr_base ft_putnbr_fd \
 			    ft_putstr ft_putstr_fd ft_get_next_line
@@ -56,8 +57,9 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
 		        ft_strmap ft_strmapi ft_strncat ft_strncmp ft_strncpy \
 		        ft_strnequ ft_strnew ft_strnstr ft_strrchr ft_strsplit \
-		        ft_strstr ft_strsub ft_strtrim ft_is_in_str \
-				ft_strappend ft_strprepend ft_strcnew
+		        ft_strstr ft_strsub ft_strtrim ft_instr \
+				ft_strappend ft_strprepend ft_strcnew ft_strpad_left \
+				ft_strpad_right ft_strcut
 SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
 				$(addprefix list/, $(SRC_LIST)) \
