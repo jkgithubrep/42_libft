@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/02/27 13:14:38 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/06 13:20:12 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
 			    ft_putendl_fd ft_putnbr ft_putnbr_base ft_putnbr_fd \
 			    ft_putstr ft_putstr_fd ft_get_next_line
 SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
-		        ft_strcpy ft_strdel ft_strdup ft_strdup_c ft_strequ \
+		        ft_strcpy ft_strdel ft_strdup ft_strcdup ft_strequ \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
 		        ft_strmap ft_strmapi ft_strncat ft_strncmp ft_strncpy \
 		        ft_strnequ ft_strnew ft_strnstr ft_strrchr ft_strsplit \

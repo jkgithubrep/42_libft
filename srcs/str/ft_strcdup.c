@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_c.c                                      :+:      :+:    :+:   */
+/*   ft_strcdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:59:15 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 15:03:18 by jkettani         ###   ########.fr       */
+/*   Created: 2019/03/06 13:05:42 by jkettani          #+#    #+#             */
+/*   Updated: 2019/03/06 13:05:51 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strdup_c(char const *s, char c)
+char	*ft_strcdup(char const *s, char c)
 {
 	char	*dst;
 	int		i;

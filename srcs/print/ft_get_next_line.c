@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 11:21:44 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/23 02:56:06 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:19:00 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char		*get_saved_buf(t_saved **lst, int fd)
 
 static int		get_line(char *saved_buf, char **line, t_saved **lst, int fd)
 {
-	if (!(*line = ft_strdup_c(saved_buf, '\n')))
+	if (!(*line = ft_strcdup(saved_buf, '\n')))
 		return (lst_del(lst, fd, -1));
 	if (ft_strchr(saved_buf, '\n'))
 	{

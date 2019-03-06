@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:38:34 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/09 16:55:35 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:19:00 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char			**ft_strsplit(char const *s, char c)
 			s++;
 		if (*s)
 		{
-			if (!(tb[i] = ft_strdup_c(s, c)))
+			if (!(tb[i] = ft_strcdup(s, c)))
 				return (clean_tb(tb, i));
 			i++;
 			while (*s && *s != c)
