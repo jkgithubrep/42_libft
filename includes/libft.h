@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/06 13:21:45 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:57:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ char				*ft_strcut(char **str, size_t len);
 void				*ft_memcat(void *s1, size_t n1, const void *s2, size_t n2);
 void				*ft_memjoin(const void *s1, size_t n1, const void *s2,
 																	size_t n2);
+char				*ft_strndup(const char *s1, size_t len);
 
 #endif
