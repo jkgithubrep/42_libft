@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/17 12:24:21 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/17 22:52:31 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,9 @@ CPPFLAGS =      -I$(INCLUDE_PATH)
 DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.Td
 COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
 POSTCOMPILE =   @mv -f $(OBJ_PATH)/$*.Td $(OBJ_PATH)/$*.d && touch $@
+SRC_BIGINT =    ft_bigint_comp ft_bigint_add ft_bigint_subst ft_bigint_order \
+				ft_bigint_size ft_uimax_to_bigint ft_bigint_shiftleft \
+				ft_bigint_multiply_uint
 SRC_CHAR =      ft_isalnum ft_isalpha ft_isascii ft_isblank ft_iscntrl \
 			    ft_isdigit ft_isgraph ft_islower ft_isprint ft_isspace \
 			    ft_isupper ft_isxdigit ft_tolower ft_toupper ft_issign
@@ -45,7 +48,7 @@ SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base \
 				ft_is_valid_base
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew
-SRC_MATH =      ft_power ft_min ft_max
+SRC_MATH =      ft_power ft_min ft_max ft_exponent
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
 				ft_memjoin
@@ -60,7 +63,8 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strstr ft_strsub ft_strtrim ft_instr \
 				ft_strappend ft_strprepend ft_strcnew ft_strpad_left \
 				ft_strpad_right ft_strcut ft_strndup ft_strclcat ft_strdel_ret
-SRC_NAME =      $(addprefix char/, $(SRC_CHAR)) \
+SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
+				$(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
 				$(addprefix list/, $(SRC_LIST)) \
 				$(addprefix math/, $(SRC_MATH)) \

@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 12:24:52 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/17 22:52:31 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,38 @@
 # include <string.h>
 # include <stdint.h>
 
+# define BIGINT_SIZE       515
+# define BIGINT_BLOCK_SIZE 32
+
+/*
+** Typedefs
+*/
+typedef char				t_char;
+typedef	short				t_short;
+typedef int					t_int;
+typedef long int			t_lint;
+typedef long long			t_llint;
+typedef	unsigned char		t_uchar;
+typedef unsigned short		t_ushort;
+typedef unsigned int		t_uint;
+typedef unsigned long		t_ulint;
+typedef unsigned long long	t_ullint;
+typedef float				t_float;
+typedef double				t_dbl;
+typedef long double			t_ldbl;
+
+
 typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_bigint{
+	size_t			length;
+	t_uint			blocks[BIGINT_SIZE];
+}					t_bigint;
 
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
@@ -117,5 +143,19 @@ char				*ft_strndup(const char *s1, size_t len);
 size_t				ft_strclcat(char *dst, size_t dst_size, char c,
 																size_t size);
 int					ft_strdel_ret(char **as, int ret);
+int					ft_exponent(long double value);
+int					ft_bigint_comp(const t_bigint *bigint1,
+												const t_bigint *bigint2);
+t_bigint			*bigint_add(const t_bigint *bigint1,
+						const t_bigint *bigint2, t_bigint *result);
+t_bigint			*bigint_substract(const t_bigint *bigint1,
+									const t_bigint *bigint2, t_bigint *result);
+void				ft_bigint_order(const t_bigint *bigint1,
+						const t_bigint *bigint2, const t_bigint **small_nb, 
+						const t_bigint **large_nb);
+size_t				ft_bigint_size(const t_bigint *bigint);
+t_bigint			*ft_uimax_to_bigint(uintmax_t nb, t_bigint *result);
+t_bigint			*ft_bigint_shiftleft(t_bigint *result, t_uint shift);
+
 
 #endif
