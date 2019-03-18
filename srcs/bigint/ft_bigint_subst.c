@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:36:48 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:44:11 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/18 12:25:42 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Return a pointer to `result'.
 */
 
-t_bigint		*bigint_substract(const t_bigint *bigint1,
+t_bigint		*ft_bigint_subst(const t_bigint *bigint1,
 									const t_bigint *bigint2, t_bigint *result)
 {
 	const t_bigint	*large_nb;

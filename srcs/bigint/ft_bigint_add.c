@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:32:10 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:35:18 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/18 12:24:07 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Return a pointer to `result'.
 */
 
-t_bigint		*bigint_add(const t_bigint *bigint1, const t_bigint *bigint2,
+t_bigint		*ft_bigint_add(const t_bigint *bigint1, const t_bigint *bigint2,
 							t_bigint *result)
 {
 	t_ulint			sum;

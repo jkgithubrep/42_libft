@@ -6,13 +6,13 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:47:49 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:49:24 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/18 12:24:25 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_bigint		*bigint_shiftleft(t_bigint *result, t_uint shift)
+t_bigint		*ft_bigint_shiftleft(t_bigint *result, t_uint shift)
 {
 	t_uint		i;
 	int			block_size;

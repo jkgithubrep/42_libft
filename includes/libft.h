@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:52:31 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/18 20:57:02 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ int					ft_strdel_ret(char **as, int ret);
 int					ft_exponent(long double value);
 int					ft_bigint_comp(const t_bigint *bigint1,
 												const t_bigint *bigint2);
-t_bigint			*bigint_add(const t_bigint *bigint1,
+t_bigint			*ft_bigint_add(const t_bigint *bigint1,
 						const t_bigint *bigint2, t_bigint *result);
-t_bigint			*bigint_substract(const t_bigint *bigint1,
+t_bigint			*ft_bigint_subst(const t_bigint *bigint1,
 									const t_bigint *bigint2, t_bigint *result);
 void				ft_bigint_order(const t_bigint *bigint1,
 						const t_bigint *bigint2, const t_bigint **small_nb, 
@@ -156,6 +156,14 @@ void				ft_bigint_order(const t_bigint *bigint1,
 size_t				ft_bigint_size(const t_bigint *bigint);
 t_bigint			*ft_uimax_to_bigint(uintmax_t nb, t_bigint *result);
 t_bigint			*ft_bigint_shiftleft(t_bigint *result, t_uint shift);
+t_bigint			*ft_bigint_cpy(t_bigint *dest, const t_bigint *src);
+t_bigint			*ft_bigint_multiply_uint(t_bigint *result, t_uint nb);
+t_bigint			*ft_bigint_multiply(const t_bigint *bigint1, 
+									const t_bigint *bigint2, t_bigint *result);
+void				ft_bigint_pow10(t_bigint *result, t_uint exponent);
+int					ft_bigint_divide(const t_bigint *dividend, 
+												const t_bigint *divisor);
+unsigned int		ft_abs(int nb);
 
 
 #endif

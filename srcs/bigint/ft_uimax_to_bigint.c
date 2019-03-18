@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:45:39 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:47:17 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/18 12:25:01 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Return a pointer to `result'.
 */
 
-t_bigint		*uimax_to_bigint(uintmax_t nb, t_bigint *result)
+t_bigint		*ft_uimax_to_bigint(uintmax_t nb, t_bigint *result)
 {
 	int			i;
 
