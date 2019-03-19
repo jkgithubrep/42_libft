@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcat.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim_spec.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 11:18:49 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/19 10:06:03 by jkettani         ###   ########.fr       */
+/*   Created: 2019/03/19 15:38:00 by jkettani          #+#    #+#             */
+/*   Updated: 2019/03/19 15:41:03 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memcat(void *s1, size_t n1, const void *s2, size_t n2)
+char		*ft_strtrim_spec(char const *s, char *spec)
 {
-	unsigned char		*tmp_s1;
-	const unsigned char *tmp_s2;
-	size_t				i;
+	unsigned int	start;
+	unsigned int	end;
 
-	i = 0;
-	tmp_s1 = (unsigned char *)s1;
-	tmp_s2 = (const unsigned char *)s2;
-	while (i < n2)
-	{
-		tmp_s1[n1 + i] = tmp_s2[i];
-		i++;
-	}
-	return (s1);
+	if (s == NULL)
+		return (NULL);
+	if (*s == 0)
+		return (ft_strdup(s));
+	start = 0;
+	while (s[start] && ft_instr(s[start], spec))
+		start++;
+	end = (unsigned int)(ft_strlen(s) - 1);
+	while (end > start && ft_instr(s[end], spec))
+		end--;
+	return (ft_strsub(s, start, end - start + 1));
 }

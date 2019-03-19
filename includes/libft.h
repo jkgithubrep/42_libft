@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/18 20:57:02 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:40:14 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ void				ft_bigint_pow10(t_bigint *result, t_uint exponent);
 int					ft_bigint_divide(const t_bigint *dividend, 
 												const t_bigint *divisor);
 unsigned int		ft_abs(int nb);
+char				*ft_strupper(char *str);
+char				*ft_strtrim_spec(char const *s, char *spec);
 
 
 #endif

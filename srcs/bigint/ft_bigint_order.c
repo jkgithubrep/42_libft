@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:38:30 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 22:39:58 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/19 10:14:44 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 
 void			ft_bigint_order(const t_bigint *bigint1,
-					const t_bigint *bigint2, const t_bigint **small_nb, 
+					const t_bigint *bigint2, const t_bigint **small_nb,
 					const t_bigint **large_nb)
 {
 	if (ft_bigint_comp(bigint1, bigint2) >= 0)

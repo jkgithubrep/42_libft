@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:44:01 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/18 11:45:32 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/19 10:06:32 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_bigint		*ft_bigint_cpy(t_bigint *dest, const t_bigint *src)
 {
 	size_t		i;
-	
+
 	i = 0;
 	while (i < src->length)
 	{
