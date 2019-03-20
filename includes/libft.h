@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/20 12:52:25 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:03:53 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef unsigned long long	t_ullint;
 typedef float				t_float;
 typedef double				t_dbl;
 typedef long double			t_ldbl;
-
 
 typedef struct		s_list
 {
@@ -151,22 +150,21 @@ t_bigint			*ft_bigint_add(const t_bigint *bigint1,
 t_bigint			*ft_bigint_subst(const t_bigint *bigint1,
 									const t_bigint *bigint2, t_bigint *result);
 void				ft_bigint_order(const t_bigint *bigint1,
-						const t_bigint *bigint2, const t_bigint **small_nb, 
+						const t_bigint *bigint2, const t_bigint **small_nb,
 						const t_bigint **large_nb);
 size_t				ft_bigint_size(const t_bigint *bigint);
 t_bigint			*ft_uimax_to_bigint(uintmax_t nb, t_bigint *result);
 t_bigint			*ft_bigint_shiftleft(t_bigint *result, t_uint shift);
 t_bigint			*ft_bigint_cpy(t_bigint *dest, const t_bigint *src);
 t_bigint			*ft_bigint_multiply_uint(t_bigint *result, t_uint nb);
-t_bigint			*ft_bigint_multiply(const t_bigint *bigint1, 
+t_bigint			*ft_bigint_multiply(const t_bigint *bigint1,
 									const t_bigint *bigint2, t_bigint *result);
 void				ft_bigint_pow10(t_bigint *result, t_uint exponent);
-int					ft_bigint_divide(const t_bigint *dividend, 
+int					ft_bigint_divide(const t_bigint *dividend,
 												const t_bigint *divisor);
 unsigned int		ft_abs(int nb);
 char				*ft_strupper(char *str);
 char				*ft_strtrim_spec(char const *s, char *spec);
 char				*ft_strdel_ret_null(char **as);
-
 
 #endif
