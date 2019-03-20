@@ -1,12 +1,11 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
+#                                                                              # #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/19 15:40:39 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/20 12:51:58 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +63,7 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strstr ft_strsub ft_strtrim ft_instr \
 				ft_strappend ft_strprepend ft_strcnew ft_strpad_left \
 				ft_strpad_right ft_strcut ft_strndup ft_strclcat ft_strdel_ret \
-				ft_strupper ft_strtrim_spec
+				ft_strupper ft_strtrim_spec ft_strdel_ret_null
 SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
 				$(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
@@ -103,6 +102,13 @@ $(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
 $(NAME): $(OBJ)
 	$(ECHO) "Building archive file $(WARN_COLOR)$(NAME)$(NC)..."
 	$(QUIET) $(AR) $(ARFLAGS) $@ $?
+
+.PHONY: norminette
+norminette:
+	$(ECHO) "Checking norminette on .h files..."
+	$(QUIET) norminette includes
+	$(ECHO) "Checking norminette on .c files..."
+	$(QUIET) norminette srcs
 
 .PHONY: clean
 clean:

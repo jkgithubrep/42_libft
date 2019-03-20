@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcut.c                                        :+:      :+:    :+:   */
+/*   ft_strdel_ret_null.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 16:50:28 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/20 13:07:40 by jkettani         ###   ########.fr       */
+/*   Created: 2019/03/20 12:50:26 by jkettani          #+#    #+#             */
+/*   Updated: 2019/03/20 12:52:15 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char		*ft_strcut(char **str, size_t len)
+char		*ft_strdel_ret_null(char **as)
 {
-	char	*tmp;
-
-	if (!str || len > ft_strlen(*str))
-		return (*str);
-	if (!(tmp = ft_strnew(len)))
-		return (NULL);
-	if (!ft_strncpy(tmp, *str, len))
-		return (NULL);
-	ft_strdel(str);
-	*str = tmp;
-	return (*str);
+	if (as != NULL && *as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+	return (NULL);
 }

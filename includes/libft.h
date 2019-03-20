@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/19 15:40:14 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/20 12:52:25 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ int					ft_bigint_divide(const t_bigint *dividend,
 unsigned int		ft_abs(int nb);
 char				*ft_strupper(char *str);
 char				*ft_strtrim_spec(char const *s, char *spec);
+char				*ft_strdel_ret_null(char **as);
 
 
 #endif
