@@ -1,11 +1,12 @@
 # **************************************************************************** #
-#                                                                              # #                                                         :::      ::::::::    #
+#                                                                              #
+#                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/20 12:51:58 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/27 10:49:07 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,15 +28,15 @@ SRC_PATH =      srcs
 INCLUDE_PATH =  includes
 OBJ_PATH =      .obj
 RM =            rm -f
-RMDIR =         rmdir -p
+RMDIR =         rmdir
 AR =            ar
 ARFLAGS =       -rcs
 CC =            gcc
 CFLAGS =        -Werror -Wall -Wextra
 CPPFLAGS =      -I$(INCLUDE_PATH)
-DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.Td
+DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.d
 COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
-POSTCOMPILE =   @mv -f $(OBJ_PATH)/$*.Td $(OBJ_PATH)/$*.d && touch $@
+POSTCOMPILE =   touch $@
 SRC_BIGINT =    ft_bigint_comp ft_bigint_add ft_bigint_subst ft_bigint_order \
 				ft_bigint_size ft_uimax_to_bigint ft_bigint_shiftleft \
 				ft_bigint_multiply_uint ft_bigint_cpy ft_bigint_multiply \
@@ -75,7 +76,8 @@ SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
 SRC =           $(addprefix $(SRC_PATH)/, $(addsuffix .c, $(SRC_NAME)))
 OBJ =           $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 DEP =           $(addprefix $(OBJ_PATH)/, $(SRC:.c=.d))
-OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print 2> /dev/null)
+OBJ_TREE =      $(shell find $(OBJ_PATH) -type d -print | sort -r \
+				2> /dev/null)
 
 .SUFFIXES:
 .SUFFIXES: .c .o .h
@@ -105,10 +107,10 @@ $(NAME): $(OBJ)
 
 .PHONY: norminette
 norminette:
-	$(ECHO) "Checking norminette on .h files..."
-	$(QUIET) norminette includes
-	$(ECHO) "Checking norminette on .c files..."
-	$(QUIET) norminette srcs
+	$(ECHO) "$(WARN_COLOR)Checking norminette on .h files...$(NC)"
+	$(QUIET) norminette $(INCLUDE_PATH)
+	$(ECHO) "$(WARN_COLOR)Checking norminette on .c files...$(NC)"
+	$(QUIET) norminette $(SRC_PATH)
 
 .PHONY: clean
 clean:
