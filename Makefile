@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/27 10:49:07 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/27 11:24:10 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC_CHAR =      ft_isalnum ft_isalpha ft_isascii ft_isblank ft_iscntrl \
 SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base \
 				ft_udigits_base ft_imaxtoa_base ft_uimaxtoa_base \
 				ft_is_valid_base
+SRC_INPUT =     ft_get_next_line
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew
 SRC_MATH =      ft_power ft_min ft_max ft_exponent ft_abs
@@ -55,7 +56,7 @@ SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memjoin
 SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
 			    ft_putendl_fd ft_putnbr ft_putnbr_base ft_putnbr_fd \
-			    ft_putstr ft_putstr_fd ft_get_next_line
+			    ft_putstr ft_putstr_fd
 SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strcpy ft_strdel ft_strdup ft_strcdup ft_strequ \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
@@ -68,6 +69,7 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
 				$(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
+				$(addprefix input/, $(SRC_INPUT)) \
 				$(addprefix list/, $(SRC_LIST)) \
 				$(addprefix math/, $(SRC_MATH)) \
 				$(addprefix mem/, $(SRC_MEM)) \

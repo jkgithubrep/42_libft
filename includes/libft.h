@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/27 10:46:22 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:23:22 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,12 @@ int					ft_atoi(const char *str);
 int					ft_digits_base(intmax_t n, int radix);
 int					ft_is_valid_base(const char *base);
 int					ft_udigits_base(uintmax_t n, int radix);
+
+/*
+** Input
+*/
+
+int					ft_get_next_line(const int fd, char **line);
 
 /*
 ** List
