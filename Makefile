@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/27 11:24:10 by jkettani         ###   ########.fr        #
+#    Updated: 2019/03/27 13:36:30 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ MAKEFLAGS +=    --warn-undefined-variables
 NAME =          libft.a
 SRC_PATH =      srcs
 INCLUDE_PATH =  includes
+FT_PRINTF_INC = $(INCLUDE_PATH)/ft_printf
 OBJ_PATH =      .obj
 RM =            rm -f
 RMDIR =         rmdir
@@ -33,7 +34,7 @@ AR =            ar
 ARFLAGS =       -rcs
 CC =            gcc
 CFLAGS =        -Werror -Wall -Wextra
-CPPFLAGS =      -I$(INCLUDE_PATH)
+CPPFLAGS =      -I$(INCLUDE_PATH) -I$(FT_PRINTF_INC)
 DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.d
 COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
 POSTCOMPILE =   touch $@
@@ -54,9 +55,16 @@ SRC_MATH =      ft_power ft_min ft_max ft_exponent ft_abs
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
 				ft_memjoin
+SRC_PRINT_FT =  ft_printf get_formatted_str \
+				dbl_to_str_conv format_parser conv_spec_parser \
+				int_type_handler dbl_type_handler dbl_utils \
+				int_to_str_conv formatting_utils int_formatting_utils \
+				options_handler conv_spec_parser_utils \
+				dbl_digits_buf_rfmt dbl_prec_utils
 SRC_PRINT =     ft_print_bytes ft_putchar ft_putchar_fd ft_putendl \
 			    ft_putendl_fd ft_putnbr ft_putnbr_base ft_putnbr_fd \
-			    ft_putstr ft_putstr_fd
+			    ft_putstr ft_putstr_fd \
+				$(addprefix ft_printf/, $(SRC_PRINT_FT))
 SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strcpy ft_strdel ft_strdup ft_strcdup ft_strequ \
 		        ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen \
@@ -65,7 +73,7 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 		        ft_strstr ft_strsub ft_strtrim ft_instr \
 				ft_strappend ft_strprepend ft_strcnew ft_strpad_left \
 				ft_strpad_right ft_strcut ft_strndup ft_strclcat ft_strdel_ret \
-				ft_strupper ft_strtrim_spec ft_strdel_ret_null
+				ft_strupper ft_strtrim_spec ft_strdel_ret_null ft_strskip
 SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
 				$(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \

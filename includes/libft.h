@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/27 11:23:22 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/27 12:37:52 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,9 @@ void				*ft_memjoin(const void *s1, size_t n1, const void *s2,
 ** Print
 */
 
+int					ft_asprintf(char **str, const char *fmt, ...);
+int					ft_dprintf(int fd, const char *restrict fmt, ...);
+int					ft_printf(const char *restrict fmt, ...);
 void				ft_print_bytes(void *ptr, size_t size);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
