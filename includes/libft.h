@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/27 12:37:52 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:42:40 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base_size);
 char				*ft_uimaxtoa_base(uintmax_t nb, const char *base);
 int					ft_atoi(const char *str);
+int					ft_atois(const char *str, int *nb);
+int					ft_check_int_overflow_add(int nb1, int nb2);
+int					ft_check_int_overflow_multi(int nb1, int nb2);
 int					ft_digits_base(intmax_t n, int radix);
 int					ft_is_valid_base(const char *base);
 int					ft_udigits_base(uintmax_t n, int radix);
