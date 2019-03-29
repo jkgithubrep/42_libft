@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 16:34:05 by jkettani          #+#    #+#             */
-/*   Updated: 2018/12/06 12:09:25 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/29 16:00:12 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*elem;
 
-	elem = (t_list *)malloc(sizeof(t_list));
-	if (elem == NULL)
+	if (!(elem = (t_list *)ft_memalloc(sizeof(t_list))))
 		return (NULL);
 	if (content == NULL)
 	{
@@ -27,7 +26,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if ((elem->content = ft_memalloc(content_size)) == NULL)
+		if (!(elem->content = ft_memalloc(content_size)))
 		{
 			free(elem);
 			return (NULL);
