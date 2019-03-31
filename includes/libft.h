@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/31 13:01:07 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:39:14 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,16 @@ int					ft_get_next_line(const int fd, char **line);
 ** List
 */
 
+int					ft_lsthasdup(t_list **lst, int (*cmp)());
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lstmergesort(t_list **lst, int (*cmp)());
 void				ft_lstrev(t_list **lst);
+void				ft_lstsplithalf(t_list *lst, t_list **front, t_list **back);
 
 /*
 ** Math
