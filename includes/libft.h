@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 15:37:15 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/01 23:20:23 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int					ft_udigits_base(uintmax_t n, int radix);
 */
 
 int					ft_get_next_line(const int fd, char **line);
+int					ft_secure_gnl(const int fd, char **line, int *newline,
+						size_t limit);
 
 /*
 ** List
