@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstrev.c                                        :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/31 12:38:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 14:13:31 by jkettani         ###   ########.fr       */
+/*   Created: 2019/04/01 14:01:05 by jkettani          #+#    #+#             */
+/*   Updated: 2019/04/01 14:11:56 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void		ft_lstrev(t_list **lst)
+void		*ft_memdup(const void *src, size_t size)
 {
-	t_list	*prev;
-	t_list	*next;
+	void	*dst;
 
-	if (!lst || !*lst)
-		return ;
-	prev = NULL;
-	while (*lst)
-	{
-		next = (*lst)->next;
-		(*lst)->next = prev;
-		prev = *lst;
-		*lst = next;
-	}
-	*lst = prev;
+	if (!(dst = ft_memalloc(size)))
+		return (NULL);
+	if (!ft_memcpy(dst, src, size))
+		return (NULL);
+	return (dst);
 }
