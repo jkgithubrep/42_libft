@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 14:12:21 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:37:15 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,8 @@ void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memjoin(const void *s1, size_t n1, const void *s2,
 						size_t n2);
 void				*ft_memdup(const void *src, size_t size);
+void				*ft_memcdup(const void *src, int c, size_t size,
+						size_t *dst_size);
 
 /*
 ** Print

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/01 14:01:05 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 18:44:04 by jkettani         ###   ########.fr       */
+/*   Created: 2019/04/01 15:17:47 by jkettani          #+#    #+#             */
+/*   Updated: 2019/04/01 15:38:08 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void		*ft_memdup(const void *src, size_t size)
+void		*ft_memcdup(const void *src, int c, size_t size, size_t *dst_size)
 {
+	size_t	i;
 	void	*dst;
 
-	if (!(dst = ft_memalloc(size + 1)))
-		return (NULL);
-	if (!ft_memcpy(dst, src, size))
-		return (NULL);
+	i = 0;
+	while ((i < size) && (((const unsigned char *)src)[i] != (unsigned char)c))
+		i++;
+	dst = ft_memdup(src, i);
+	*dst_size = i;
 	return (dst);
 }
