@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/04/01 15:37:27 by jkettani         ###   ########.fr        #
+#    Updated: 2019/04/01 23:15:57 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base \
 				ft_udigits_base ft_imaxtoa_base ft_uimaxtoa_base \
 				ft_is_valid_base ft_atois ft_check_int_overflow_add \
 				ft_check_int_overflow_multi
-SRC_INPUT =     ft_get_next_line
+SRC_INPUT =     ft_get_next_line ft_secure_gnl
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew ft_lstrev ft_lstsplithalf ft_lstmergesort \
 				ft_lsthasdup
