@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 23:20:23 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/02 14:31:52 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstmergesort(t_list **lst, int (*cmp)());
 void				ft_lstrev(t_list **lst);
 void				ft_lstsplithalf(t_list *lst, t_list **front, t_list **back);
+int					ft_lstissorted(t_list *lst, int (*f)());
 
 /*
 ** Math
