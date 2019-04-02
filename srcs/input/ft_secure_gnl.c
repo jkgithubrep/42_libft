@@ -6,13 +6,14 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 23:08:05 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 23:08:09 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/02 10:36:01 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_secure_gnl.h"
 #include <unistd.h>
+#include <limits.h>
 
 static int	del_saved_buf(t_buf *saved_buf, int ret)
 {
@@ -28,9 +29,11 @@ static int	save_buf(t_buf *saved_buf, char *new_buf, size_t new_buf_size)
 	tmp = saved_buf->buf;
 	saved_buf->buf = (char *)ft_memjoin(saved_buf->buf, saved_buf->size,
 								new_buf, new_buf_size);
-	saved_buf->size += new_buf_size;
 	if (tmp)
 		free(tmp);
+	if (new_buf_size > (size_t)INT_MAX - saved_buf->size)
+		return (EXIT_ERR);
+	saved_buf->size += new_buf_size;
 	return (saved_buf->buf ? 0 : EXIT_ERR);
 }
 
