@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 23:08:05 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/02 10:36:01 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/02 11:27:12 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ static int	get_line(t_buf *saved_buf, char **line, int *newline)
 	if (!(*line = (char *)ft_memcdup(saved_buf->buf, '\n', saved_buf->size,
 				&ret)))
 		return (del_saved_buf(saved_buf, EXIT_ERR));
-	if (saved_buf->buf[ret] == '\n')
-		*newline = 1;
+	*newline = (saved_buf->buf[ret] == '\n') ? 1 : 0;
 	tmp = saved_buf->buf;
 	if (*newline && saved_buf->size > ret + 1)
 	{
@@ -70,7 +69,6 @@ int			ft_secure_gnl(const int fd, char **line, int *newline, size_t limit)
 	char			buf[GNL_BUFF_SIZE];
 	int				ret;
 
-	*newline = 0;
 	if (fd < 0 || !line)
 		return (EXIT_ERR);
 	if (ft_memchr(saved_buf.buf, '\n', saved_buf.size))
