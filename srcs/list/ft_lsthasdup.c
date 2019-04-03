@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 17:04:39 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/31 17:38:37 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/03 11:41:51 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_lsthasdup(t_list **lst, int (*cmp)())
 {
 	t_list	*elm;
 
-	if (!lst || !*lst)
+	if (!lst || !*lst || !(*lst)->next)
 		return (0);
 	ft_lstmergesort(lst, cmp);
 	elm = *lst;
