@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 12:23:27 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/17 12:23:56 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/04 13:30:06 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int		ft_strdel_ret(char **as, int ret)
 {
-	if (as != NULL && *as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+	ft_strdel(as);
 	return (ret);
 }

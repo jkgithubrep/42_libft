@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/04/02 14:32:08 by jkettani         ###   ########.fr        #
+#    Updated: 2019/04/04 12:41:47 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RMDIR =         rmdir
 AR =            ar
 ARFLAGS =       -rcs
 CC =            gcc
-CFLAGS =        -Werror -Wall -Wextra
+CFLAGS =        -g3 -Werror -Wall -Wextra
 CPPFLAGS =      -I$(INCLUDE_PATH) -I$(FT_PRINTF_INC)
 DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.d
 COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c

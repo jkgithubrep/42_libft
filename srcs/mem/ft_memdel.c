@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:22:50 by jkettani          #+#    #+#             */
-/*   Updated: 2018/11/28 14:33:09 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/04 13:28:45 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap != NULL)
-	{
-		free(*ap);
-		*ap = NULL;
-	}
+	if (!ap)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }
