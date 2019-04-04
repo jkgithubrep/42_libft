@@ -6,13 +6,13 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:36:29 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/04 13:29:30 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/04 13:36:05 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_strdel(char **as)
 {
-	ft_memdel(as);
+	ft_memdel((void **)as);
 }

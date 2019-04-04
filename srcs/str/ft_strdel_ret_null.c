@@ -6,11 +6,11 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 12:50:26 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/04 13:30:28 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/04 13:36:32 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char		*ft_strdel_ret_null(char **as)
 {
