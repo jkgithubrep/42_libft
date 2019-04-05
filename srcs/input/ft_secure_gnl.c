@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 23:08:05 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/04 13:40:28 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/05 11:23:48 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ static int	save_buf(t_buf *saved_buf, char *new_buf, size_t new_buf_size)
 	char	*tmp;
 
 	tmp = saved_buf->buf;
-	saved_buf->buf = (char *)ft_memjoin(saved_buf->buf, saved_buf->size,
-								new_buf, new_buf_size);
+	if (!(saved_buf->buf = (char *)ft_memjoin(saved_buf->buf, saved_buf->size,
+								new_buf, new_buf_size)))
+		return (ft_strdel_ret(&tmp, EXIT_ERR));
 	ft_strdel(&tmp);
 	if (new_buf_size > (size_t)INT_MAX - saved_buf->size)
 		return (EXIT_ERR);
@@ -43,13 +44,15 @@ static int	get_line(t_buf *saved_buf, char **line, int *newline)
 	if (*newline && saved_buf->size > ret + 1)
 	{
 		saved_buf->size -= ret + 1;
-		saved_buf->buf = ft_memdup(saved_buf->buf + ret + 1,
-											saved_buf->size);
+		if (!(saved_buf->buf = ft_memdup(saved_buf->buf + ret + 1,
+						saved_buf->size)))
+			return (ft_strdel_ret(&tmp, EXIT_ERR));
 	}
 	else
 	{
 		saved_buf->size = 0;
-		saved_buf->buf = ft_memdup("", 0);
+		if (!(saved_buf->buf = ft_memdup("", 0)))
+			return (ft_strdel_ret(&tmp, EXIT_ERR));
 	}
 	ft_strdel(&tmp);
 	return ((int)ret);
