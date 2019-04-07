@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/04/04 12:41:47 by jkettani         ###   ########.fr        #
+#    Updated: 2019/04/07 20:41:46 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CPPFLAGS =      -I$(INCLUDE_PATH) -I$(FT_PRINTF_INC)
 DEPFLAGS =      -MT $@ -MMD -MP -MF $(OBJ_PATH)/$*.d
 COMPILE.c =     $(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c
 POSTCOMPILE =   touch $@
+SRC_ARRAY =     ft_arraymergesort
 SRC_BIGINT =    ft_bigint_comp ft_bigint_add ft_bigint_subst ft_bigint_order \
 				ft_bigint_size ft_uimax_to_bigint ft_bigint_shiftleft \
 				ft_bigint_multiply_uint ft_bigint_cpy ft_bigint_multiply \
@@ -52,7 +53,7 @@ SRC_CONVERT =   ft_atoi ft_itoa ft_itoa_base ft_digits_base \
 SRC_INPUT =     ft_get_next_line ft_secure_gnl
 SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew ft_lstrev ft_lstsplithalf ft_lstmergesort \
-				ft_lsthasdup ft_lstissorted
+				ft_lsthasdup ft_lstissorted ft_lstcountif ft_lstget
 SRC_MATH =      ft_power ft_min ft_max ft_exponent ft_abs
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
@@ -76,7 +77,8 @@ SRC_STR =       ft_count_words_c ft_strcat ft_strchr ft_strclr ft_strcmp \
 				ft_strappend ft_strprepend ft_strcnew ft_strpad_left \
 				ft_strpad_right ft_strcut ft_strndup ft_strclcat ft_strdel_ret \
 				ft_strupper ft_strtrim_spec ft_strdel_ret_null ft_strskip
-SRC_NAME =      $(addprefix bigint/, $(SRC_BIGINT)) \
+SRC_NAME =      $(addprefix array/, $(SRC_ARRAY)) \
+				$(addprefix bigint/, $(SRC_BIGINT)) \
 				$(addprefix char/, $(SRC_CHAR)) \
 				$(addprefix convert/, $(SRC_CONVERT)) \
 				$(addprefix input/, $(SRC_INPUT)) \

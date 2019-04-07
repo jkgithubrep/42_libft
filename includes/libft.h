@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/02 14:31:52 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/07 20:55:54 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ typedef struct		s_bigint{
 	size_t			length;
 	t_uint			blocks[BIGINT_SIZE];
 }					t_bigint;
+
+/*
+** Array
+*/
+
+void				ft_arraymergesort(int *array, size_t array_size);
 
 /*
 ** Bigint
@@ -144,6 +150,8 @@ void				ft_lstmergesort(t_list **lst, int (*cmp)());
 void				ft_lstrev(t_list **lst);
 void				ft_lstsplithalf(t_list *lst, t_list **front, t_list **back);
 int					ft_lstissorted(t_list *lst, int (*f)());
+size_t				ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)());
+void				ft_lstget(t_list *lst, void *ret, void (*f)(void *, void*));
 
 /*
 ** Math
