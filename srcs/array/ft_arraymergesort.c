@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 20:06:34 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/07 21:20:09 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/10 19:37:06 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	merge(int *array, int left, int mid, int right)
 
 void		merge_sort(int *array, int left, int right)
 {
-	int 	mid;
-		
+	int		mid;
+
 	if (!array || (left >= right))
 		return ;
 	mid = (left + right) / 2;
