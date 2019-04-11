@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/09 12:06:01 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:15:28 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ typedef unsigned long long	t_ullint;
 typedef float				t_float;
 typedef double				t_dbl;
 typedef long double			t_ldbl;
+
+# endif
+
+# ifndef __BASE__
+# define __BASE__
+
+# define DEC_BASE "0123456789"
+# define OCT_BASE "01234567"
+# define BIN_BASE "01"
 
 # endif
 
@@ -154,6 +163,8 @@ size_t				ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)());
 void				ft_lstget(t_list *lst, void *ret, void (*f)(void *, void*));
 t_list				*ft_lstfindfirst(t_list *lst, void *data_ref, int (*cmp)());
 t_list				*ft_lstfindlast(t_list *lst, void *data_ref, int (*cmp)());
+size_t				ft_lstsize(t_list *lst);
+size_t				ft_lsttointarray(t_list *lst, int **array, int (*f)());
 
 /*
 ** Math
