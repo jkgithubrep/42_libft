@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/11 16:15:28 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/13 10:48:13 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ int					ft_secure_gnl(const int fd, char **line, int *newline,
 ** List
 */
 
-int					ft_lsthasdup(t_list **lst, int (*cmp)());
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem),
 						void (*del)(void *, size_t));
 t_list				*ft_lstnew(void const *content, size_t content_size);
@@ -165,6 +164,8 @@ t_list				*ft_lstfindfirst(t_list *lst, void *data_ref, int (*cmp)());
 t_list				*ft_lstfindlast(t_list *lst, void *data_ref, int (*cmp)());
 size_t				ft_lstsize(t_list *lst);
 size_t				ft_lsttointarray(t_list *lst, int **array, int (*f)());
+int					ft_lsthasdup(t_list **lst, int (*cmp)(),
+						void (*del)(void *, size_t));
 
 /*
 ** Math
