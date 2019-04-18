@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/18 10:34:38 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:19:25 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ typedef long double			t_ldbl;
 # endif
 
 # ifndef __BASE__
-# define __BASE__
+#  define __BASE__
 
-# define DEC_BASE "0123456789"
-# define OCT_BASE "01234567"
-# define BIN_BASE "01"
+#  define DEC_BASE "0123456789"
+#  define OCT_BASE "01234567"
+#  define BIN_BASE "01"
 
 # endif
 

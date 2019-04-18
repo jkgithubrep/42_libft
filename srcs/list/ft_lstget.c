@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:32:17 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/07 11:39:26 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/18 11:13:45 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_lstget(t_list *lst, void *ret, void (*f)(void *, void *))
 {
-	if (!lst)
+	if (!lst || !ret || !f)
 		return ;
 	while (lst)
 	{

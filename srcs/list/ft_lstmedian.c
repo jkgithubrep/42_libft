@@ -6,11 +6,12 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:29:02 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/17 17:02:53 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:12:26 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 int			ft_lstmedian(t_list *lst, int (*f)(), int *median)
 {
@@ -18,8 +19,6 @@ int			ft_lstmedian(t_list *lst, int (*f)(), int *median)
 	int		size;
 
 	if (!lst || !median || (size = ft_lstsize(lst)) < 0)
-		return (-1);
-	if (!(array = (int *)ft_memalloc(sizeof(*array) * size)))
 		return (-1);
 	if (ft_lsttointarray(lst, &array, f) < 0)
 		return (-1);

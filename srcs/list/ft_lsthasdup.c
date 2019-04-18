@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 17:04:39 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/18 10:33:56 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:18:52 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				ft_lsthasdup(t_list **lst, int (*cmp)(),
 		if (!(*cmp)(lst_cpy->content, lst_cpy->next->content))
 		{
 			ret = 1;
-			break;
+			break ;
 		}
 		lst_cpy = lst_cpy->next;
 	}
