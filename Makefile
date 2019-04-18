@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/04/11 13:28:21 by jkettani         ###   ########.fr        #
+#    Updated: 2019/04/17 17:02:10 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 				ft_lstnew ft_lstrev ft_lstsplithalf ft_lstmergesort \
 				ft_lsthasdup ft_lstissorted ft_lstcountif ft_lstget \
 				ft_lstfindfirst ft_lstfindlast ft_lstsize \
-				ft_lsttointarray
+				ft_lsttointarray ft_lstmedian
 SRC_MATH =      ft_power ft_min ft_max ft_exponent ft_abs
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
