@@ -6,18 +6,18 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:05:41 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/11 13:22:19 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:24:41 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)())
+int			ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)())
 {
-	size_t	ret;
+	int		ret;
 
 	if (!lst || !data_ref || !cmp)
-		return (0);
+		return (-1);
 	ret = 0;
 	while (lst)
 	{

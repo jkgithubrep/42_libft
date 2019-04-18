@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/13 10:48:13 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:41:43 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,14 +158,15 @@ void				ft_lstmergesort(t_list **lst, int (*cmp)());
 void				ft_lstrev(t_list **lst);
 void				ft_lstsplithalf(t_list *lst, t_list **front, t_list **back);
 int					ft_lstissorted(t_list *lst, int (*f)());
-size_t				ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)());
+int					ft_lstcountif(t_list *lst, void *data_ref, int (*cmp)());
 void				ft_lstget(t_list *lst, void *ret, void (*f)(void *, void*));
 t_list				*ft_lstfindfirst(t_list *lst, void *data_ref, int (*cmp)());
 t_list				*ft_lstfindlast(t_list *lst, void *data_ref, int (*cmp)());
-size_t				ft_lstsize(t_list *lst);
-size_t				ft_lsttointarray(t_list *lst, int **array, int (*f)());
+int					ft_lstsize(t_list *lst);
+int					ft_lsttointarray(t_list *lst, int **array, int (*f)());
 int					ft_lsthasdup(t_list **lst, int (*cmp)(),
 						void (*del)(void *, size_t));
+int					ft_lstmedian(t_list *lst, int (*f)(), int *median);
 
 /*
 ** Math
