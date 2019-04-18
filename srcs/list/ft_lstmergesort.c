@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 16:01:09 by jkettani          #+#    #+#             */
-/*   Updated: 2019/03/31 16:27:00 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/12 12:58:23 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@ static t_list	*sorted_merge(t_list *front, t_list *back, int (*cmp)())
 	return (res);
 }
 
-void			ft_lstmergesort(t_list **lst, int (*cmp)())
+t_list			*ft_lstmergesort(t_list **lst, int (*cmp)())
 {
 	t_list		*front;
 	t_list		*back;
 
 	if (!cmp || !lst || !*lst || !(*lst)->next)
-		return ;
+		return (NULL);
 	ft_lstsplithalf(*lst, &front, &back);
 	ft_lstmergesort(&front, cmp);
 	ft_lstmergesort(&back, cmp);
 	*lst = sorted_merge(front, back, cmp);
+	return (*lst);
 }

@@ -6,19 +6,19 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 12:38:20 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/01 14:13:31 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/04/12 12:58:55 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstrev(t_list **lst)
+t_list		*ft_lstrev(t_list **lst)
 {
 	t_list	*prev;
 	t_list	*next;
 
 	if (!lst || !*lst)
-		return ;
+		return (NULL);
 	prev = NULL;
 	while (*lst)
 	{
@@ -28,4 +28,5 @@ void		ft_lstrev(t_list **lst)
 		*lst = next;
 	}
 	*lst = prev;
+	return (*lst);
 }
