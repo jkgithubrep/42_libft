@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/18 16:19:25 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/06/24 12:04:05 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef long double			t_ldbl;
 
 # endif
 
+/*
+** Structures:
+**  - s_list: structure used for list manipulations
+**  - s_bigint: structure used for bigint manipulations
+**  - s_array_args: struture used for array manipulations
+**  - s_pos: structure used in ft_mergesort
+*/
+
 typedef struct		s_list
 {
 	void			*content;
@@ -66,11 +74,26 @@ typedef struct		s_bigint{
 	t_uint			blocks[BIGINT_SIZE];
 }					t_bigint;
 
+typedef struct		s_array_args
+{
+	void	*arr;
+	size_t	elmt_size;
+	size_t	nb_elmt;
+	int		(*cmp)();
+}					t_array_args;
+
+typedef struct		s_pos
+{
+	int	cur;
+	int	left;
+	int right;
+}					t_pos;
+
 /*
 ** Array
 */
 
-void				ft_arraymergesort(int *array, size_t array_size);
+int					ft_mergesort(t_array_args *a);
 
 /*
 ** Bigint
