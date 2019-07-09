@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/06/24 12:04:05 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/07/09 11:21:24 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,8 @@ t_list				*ft_lstfindfirst(t_list *lst, void *data_ref, int (*cmp)());
 t_list				*ft_lstfindlast(t_list *lst, void *data_ref, int (*cmp)());
 int					ft_lstsize(t_list *lst);
 int					ft_lsttointarray(t_list *lst, int **array, int (*f)());
-int					ft_lsthasdup(t_list **lst, int (*cmp)(),
+int					ft_lstsortedhasdup(t_list *lst, int (*cmp)());
+int					ft_lstunsortedhasdup(t_list **lst, int (*cmp)(),
 						void (*del)(void *, size_t));
 int					ft_lstmedian(t_list *lst, int (*f)(), int *median);
 
