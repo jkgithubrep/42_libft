@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/07/09 11:21:24 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/07/09 15:03:00 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ unsigned int		ft_abs(int nb);
 ** Mem
 */
 
+unsigned int		ft_ltobendian(unsigned int nb);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				ft_memdel(void **ap);
