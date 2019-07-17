@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:27:18 by jkettani          #+#    #+#             */
-/*   Updated: 2019/07/09 16:50:04 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/07/17 11:35:29 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,8 @@ int					ft_lstsortedhasdup(t_list *lst, int (*cmp)());
 int					ft_lstunsortedhasdup(t_list **lst, int (*cmp)(),
 						void (*del)(void *, size_t));
 int					ft_lstmedian(t_list *lst, int (*f)(), int *median);
+void				ft_lstremoveif(t_list **alst, void *ref, int (*cmp)(),
+						void (*del)(void *, size_t));
 
 /*
 ** Math
