@@ -6,7 +6,7 @@
 #    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/07/18 14:23:29 by jkettani         ###   ########.fr        #
+#    Updated: 2019/07/24 18:54:37 by jkettani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ SRC_LIST =      ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap \
 SRC_MATH =      ft_power ft_min ft_max ft_exponent ft_abs
 SRC_MEM =       ft_bzero ft_memalloc ft_memchr ft_memcmp ft_memcpy \
 				ft_memccpy ft_memdel ft_memmove ft_memset ft_memcat \
-				ft_memjoin ft_memdup ft_memcdup ft_ltobendian
+				ft_memjoin ft_memdup ft_memcdup ft_ltobendian ft_del_ret
 SRC_PRINT_FT =  ft_printf get_formatted_str \
 				dbl_to_str_conv format_parser conv_spec_parser \
 				int_type_handler dbl_type_handler dbl_utils \
