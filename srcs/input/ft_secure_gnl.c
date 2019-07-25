@@ -6,7 +6,7 @@
 /*   By: jkettani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 23:08:05 by jkettani          #+#    #+#             */
-/*   Updated: 2019/04/05 11:23:48 by jkettani         ###   ########.fr       */
+/*   Updated: 2019/07/25 11:32:17 by jkettani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			ft_secure_gnl(const int fd, char **line, int *newline, size_t limit)
 	int				ret;
 
 	if (fd < 0 || !line)
-		return (EXIT_ERR);
+		return (ft_strdel_ret(&saved_buf.buf, EXIT_ERR));
 	if (ft_memchr(saved_buf.buf, '\n', saved_buf.size))
 		return (get_line(&saved_buf, line, newline));
 	while (!ft_memchr(saved_buf.buf, '\n', saved_buf.size))
